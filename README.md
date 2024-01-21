@@ -1,1 +1,1 @@
-# KriptoBazisWEB
+# Kripto Bázis Repository
