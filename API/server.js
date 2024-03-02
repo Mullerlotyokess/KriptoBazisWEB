@@ -21,6 +21,11 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("Backend API get /");
+});
+
+
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}...`);
+    console.log(`Server running on: ${port} port`);
 });
