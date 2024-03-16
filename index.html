@@ -4,70 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="Assets/css/main.css">
     <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/css/main.css">
     <link rel="icon" type="image/x-icon" href="Assets/img/crpytowebICON.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="Assets/bootstrap-icons-1.11.2/font/bootstrap-icons.min.css">
 </head>
-<body ng-controller="mainCtrl">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary p-3">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Kripto Bázis</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-          
-              <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto ">
-                  <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="#">Kezdőlap</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link mx-2" href="#">Products</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link mx-2" href="#">Pricing</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Company
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Blog</a></li>
-                      <li><a class="dropdown-item" href="#">About Us</a></li>
-                      <li><a class="dropdown-item" href="#">Contact us</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
-                  <li class="nav-item mx-2">
-                    <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-google-plus-square"></i></a>
-                  </li>
-                  <li class="nav-item mx-2">
-                    <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li class="nav-item mx-2">
-                    <a class="nav-link text-dark h5" href="" target="blank"><i class="fab fa-facebook-square"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+<body id="body-pd" ng-controller="MainCtrl">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
-    <main>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Kripto Bazis</span> </a>
+                <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span></a> 
+                <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span></a>
+                <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span></a> 
+                <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span></a> 
+                <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span></a> 
+                <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span></a> 
+            </div>
+            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        
+    </div>
+    <!--Container Main end-->
+
+    <main ng-view>
 
     </main>
+
     <footer>
-        
+
     </footer>
     
     
     <script src="Assets/js/bootstrap.min.js"></script>
     <script src="Assets/js/bootstrap.bundle.js"></script>
+    <script src="Assets/js/bootstrap.bundle.min.js"></script>
     <script src="Assets/js/angular.min.js"></script>
     <script src="Assets/js/angular-route.min.js"></script>
     <script src="Assets/js/moment.min.js"></script>
     <script src="Assets/js/ng-notify.min.js"></script>
+    <script src="Assets/js/axios.min.js"></script>
+    <script src="Assets/js/jquery.min.js"></script>
     <script src="Assets/js/app.js"></script>
+
+    <script src="Controllers/MainCtrl.js"></script>
+    
 </body>
 </html>
