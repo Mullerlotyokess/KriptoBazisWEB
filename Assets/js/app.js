@@ -1,4 +1,4 @@
-var app = angular.module('KriptoBazisAPP', ['ngRoute']);
+var app = angular.module('KriptoBazisAPP', ['ngRoute', 'ngNotify']);
 
 app.run(($rootScope) => {
     $rootScope.loggedIn = false;
@@ -32,11 +32,11 @@ app.config(($routeProvider) => {
         })
         .when('/wiki', {
             templateUrl: 'Views/wiki.html',
-            controller: 'authCtrl'
+            controller: 'wikiCtrl'
         })
         .when('/news', {
-            templateUrl: 'Views/login.html',
-            controller: 'wikiCtrl'
+            templateUrl: 'Views/news.html',
+            controller: 'newsCtrl'
         })
         .when('/currencies', {
             templateUrl: 'Views/currencies.html',

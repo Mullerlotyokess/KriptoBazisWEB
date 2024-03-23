@@ -4,7 +4,6 @@
 }
 
 html {
-    font-family: defaultfont;
     font-size: 130%;
 }
 
@@ -16,6 +15,7 @@ html {
     --white-color: #F7F6FB;
     --normal-font-size: 1rem;
     --z-fixed: 100
+    
 }
 
 *,
@@ -51,6 +51,7 @@ a {
     background-color: var(--white-color);
     z-index: var(--z-fixed);
     transition: .5s
+    
 }
 
 .header_toggle {
@@ -81,7 +82,8 @@ a {
     background-color: var(--first-color);
     padding: .5rem 1rem 0 0;
     transition: .5s;
-    z-index: var(--z-fixed)
+    z-index: var(--z-fixed);
+    font-family: defaultfont;
 }
 
 .nav {
@@ -190,5 +192,13 @@ a {
 }
 
 .bitcoinicon{
+    font-size: 150%;
+}
+
+#loginForm{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#loginBtn{
     font-size: 150%;
 }
