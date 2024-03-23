@@ -18,39 +18,30 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> 
-                <a href="#" class="nav_logo"> <i class="bi bi-currency-bitcoin bitcoinicon"></i> <span class="nav_logo-name">Kripto Bázis</span> </a>
+                <a href="#!/main" class="nav_logo"> <i class="bi bi-currency-bitcoin bitcoinicon"></i> <span class="nav_logo-name">Kripto Bázis</span> </a>
                     <div class="nav_list">
                         <div ng-show="!loggedIn">
-                            <a href="#" class="nav_link"> <i class="bi bi-box-arrow-in-right"></i> <span class="nav_name">Bejelentkezés</span></a> 
-                            <a href="#" class="nav_link"> <i class="bi bi-person-add"></i> <span class="nav_name">Regisztráció</span></a>
+                            <a href="#!/login" class="nav_link"> <i class="bi bi-box-arrow-in-right"></i> <span class="nav_name">Bejelentkezés</span></a> 
+                            <a href="#!/register" class="nav_link"> <i class="bi bi-person-add"></i> <span class="nav_name">Regisztráció</span></a>
                         </div>
                         <div ng-show="loggedIn">
-                            <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">TudásBázis</span></a>
-                            <a href="#" class="nav_link"> <i class="bi bi-newspaper"></i> <span class="nav_name">Hírek</span></a> 
-                            <a href="#" class="nav_link"> <i class="bi bi-graph-up-arrow"></i> <span class="nav_name">Árfolyam</span></a> 
-                            <a href="#" class="nav_link"> <i class="bi bi-signpost"></i> <span class="nav_name">Fórum</span></a> 
-                            <a href="#" class="nav_link"> <i class="bi bi-person-gear"></i> <span class="nav_name">Profil</span></a> 
+                            <a href="#!/wiki" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">TudásBázis</span></a>
+                            <a href="#!/news" class="nav_link"> <i class="bi bi-newspaper"></i> <span class="nav_name">Hírek</span></a> 
+                            <a href="#!/currencies" class="nav_link"> <i class="bi bi-graph-up-arrow"></i> <span class="nav_name">Árfolyam</span></a> 
+                            <a href="#!/forum" class="nav_link"> <i class="bi bi-signpost"></i> <span class="nav_name">Fórum</span></a> 
+                            <a href="#!/profile" class="nav_link"> <i class="bi bi-person-gear"></i> <span class="nav_name">Profil</span></a> 
                         </div>
                     </div>
             </div> 
-            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Kijelentkezés</span> </a>
+            <a ng-show="loggedIn" href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Kijelentkezés</span> </a>
         </nav>
     </div>
-    <!--Container Main start-->
-    <div class="height-100 bg-light">
-        
-    </div>
-    <!--Container Main end-->
-
     <main ng-view>
 
     </main>
 
-    <footer>
 
-    </footer>
-    
-    
+    <!--Asset lista-->
     <script src="Assets/js/bootstrap.min.js"></script>
     <script src="Assets/js/bootstrap.bundle.js"></script>
     <script src="Assets/js/bootstrap.bundle.min.js"></script>
@@ -62,6 +53,7 @@
     <script src="Assets/js/jquery.min.js"></script>
     <script src="Assets/js/app.js"></script>
 
+    <!--Controller Lista-->
     <script src="Controllers/MainCtrl.js"></script>
     
 </body>

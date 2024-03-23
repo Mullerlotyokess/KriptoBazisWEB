@@ -22,6 +22,30 @@ app.config(($routeProvider) => {
         .when('/main', {
             templateUrl: 'Views/main.html'
         })
+        .when('/login', {
+            templateUrl: 'Views/login.html',
+            controller: 'authCtrl'
+        })
+        .when('/register', {
+            templateUrl: 'Views/register.html',
+            controller: 'authCtrl'
+        })
+        .when('/wiki', {
+            templateUrl: 'Views/wiki.html',
+            controller: 'authCtrl'
+        })
+        .when('/news', {
+            templateUrl: 'Views/login.html',
+            controller: 'wikiCtrl'
+        })
+        .when('/currencies', {
+            templateUrl: 'Views/currencies.html',
+            controller: 'currenciesCtrl'
+        })
+        .when('/profile', {
+            templateUrl: 'Views/profile.html',
+            controller: 'profileCtrl'
+        })
         .otherwise({
             redirectTo: '/main'
         });
