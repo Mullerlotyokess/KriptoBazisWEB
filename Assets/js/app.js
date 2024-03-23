@@ -2,7 +2,7 @@ var app = angular.module('KriptoBazisAPP', ['ngRoute']);
 
 app.run(($rootScope) => {
     $rootScope.loggedIn = false;
-    $rootScope.appTitle = "Kripto Bazis";
+    $rootScope.pageTitle = "Kripto Bázis";
 
     $rootScope.emailRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     $rootScope.passwdRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;

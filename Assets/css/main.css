@@ -11,7 +11,7 @@ html {
 :root {
     --header-height: 3rem;
     --nav-width: 90px;
-    --first-color: #4723D9;
+    --first-color: rgb(2,0,36);
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
     --normal-font-size: 1rem;
@@ -112,7 +112,7 @@ a {
 
 .nav_logo-name {
     color: var(--white-color);
-    font-weight: 700
+    font-size: 150%;
 }
 
 .nav_link {
@@ -187,4 +187,8 @@ a {
     .body-pd {
         padding-left: calc(var(--nav-width) + 188px)
     }
+}
+
+.bitcoinicon{
+    font-size: 150%;
 }
