@@ -202,3 +202,7 @@ a {
 #loginBtn{
     font-size: 150%;
 }
+
+#registerForm{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

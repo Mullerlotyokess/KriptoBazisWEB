@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $rootScope, ngNotify) {
+app.controller("authCtrl", function($scope, $rootScope) {
 
     $scope.passReset = function()
     {
