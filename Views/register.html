@@ -3,25 +3,39 @@
         <form action="" id="registerForm">
             <h1>Regisztráció</h1>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control w-50" id="email">
-                <label for="email">E-mail Cím</label>
+                <input type="text" class="form-control w-50" id="email" ng-model="user.email">
+                <label for="text">E-mail Cím</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control w-50" id="username">
+                <input type="text" class="form-control w-50" id="username" ng-model="user.username">
                 <span></span>
                 <label for="pass">Felhasználónév</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control w-50" id="pass">
+                <input type="password" class="form-control w-50" id="pass" ng-model="user.pass">
                 <span></span>
                 <label for="pass">Jelszó</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control w-50" id="passconfirm">
+                <input type="password" class="form-control w-50" id="passconfirm" ng-model="user.passconfirm">
                 <span></span>
                 <label for="pass">Jelszó megerősítő</label>
               </div>
-            <input type="button" class="btn btn-primary" value="Regisztráció" id="loginBtn">
+            <input type="button" class="btn btn-primary" value="Regisztráció" id="loginBtn" ng-click="regisztracio()">
         </form>
     </div>
 </div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-currency-bitcoin bitcoinicon"></i>
+        <strong class="me-auto">Kripto Bázis</strong>
+        <small>Épp most</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastcontent">
+          
+      </div>
+    </div>
+  </div>
