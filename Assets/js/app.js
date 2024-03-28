@@ -42,6 +42,10 @@ app.config(($routeProvider) => {
             templateUrl: 'Views/currencies.html',
             controller: 'currenciesCtrl'
         })
+        .when('/forum', {
+            templateUrl: 'Views/forum.html',
+            controller: 'forumCtrl'
+        })
         .when('/profile', {
             templateUrl: 'Views/profile.html',
             controller: 'profileCtrl'
