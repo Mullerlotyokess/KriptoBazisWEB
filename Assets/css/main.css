@@ -225,6 +225,7 @@ footer{
 .container{
     float: left;
     margin-top: 25px;
+    
 }
 
 .form-control{
@@ -251,4 +252,9 @@ footer{
 }
 li{
     padding-top: 10px;
+}
+
+#arfolyamdiv, th{
+    font-family: defaultfont;
+    font-weight: lighter;
 }
