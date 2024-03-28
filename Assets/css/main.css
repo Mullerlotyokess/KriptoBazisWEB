@@ -7,6 +7,8 @@ html {
     font-size: 130%;
 }
 
+/*Sidebar CSS*/
+
 :root {
     --header-height: 3rem;
     --nav-width: 90px;
@@ -31,7 +33,7 @@ body {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     transition: .5s;
-    background-color: var(--white-color);
+    background-color: white;
 }
 
 a {
@@ -189,6 +191,18 @@ a {
     .body-pd {
         padding-left: calc(var(--nav-width) + 188px)
     }
+
+    
+}
+
+/*Sidebar CSS vége*/
+
+footer{
+    background-color: black;
+    letter-spacing: 3px;
+    font-size: 80%;
+    text-align: center;
+    padding: 10px;
 }
 
 .bitcoinicon{
@@ -197,6 +211,7 @@ a {
 
 #loginForm{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 #loginBtn{
@@ -205,4 +220,35 @@ a {
 
 #registerForm{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container{
+    float: left;
+    margin-top: 25px;
+}
+
+.form-control{
+    box-shadow: 0 0 5px rgb(2,0,36);
+}
+
+
+.welcomePage
+{
+    padding-top: 50px;
+    font-family: defaultfont;
+}
+
+#welcomebackground{
+    width: 50vw;
+    float: left;
+}
+
+.welcomelist{
+    font-size: 2.2vw;
+    margin-top: 15px;
+    list-style-type: none;
+    
+}
+li{
+    padding-top: 10px;
 }
