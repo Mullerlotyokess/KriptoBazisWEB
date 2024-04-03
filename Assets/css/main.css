@@ -258,3 +258,7 @@ li{
     font-family: defaultfont;
     font-weight: lighter;
 }
+
+.card{
+    margin: 10px;
+}
