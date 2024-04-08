@@ -1,20 +1,14 @@
-require("dotenv").config();
-const express = require("express");
-var mysql = require("mysql");
-
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT;
-const cors = require("cors");
-const axios = require('axios');
 
-var pool = mysql.createPool({
-    connectionLimit : 10,
-    host            : process.env.DBHOST,
-    user            : process.env.DBUSER,
-    password        : process.env.DBPASS,
-    database        : process.env.DBNAME,
-    timezone        : 'UTC'
-});
+var db_modul = require('./modules/database');
+var file_modul = require('./modules/fileupload');
+var email_modul = require('./modules/email');
+
+
 
 // MIDDLEWARE FUNCTION
 
@@ -22,7 +16,9 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors());
 app.use(express.json());
 
-
+app.use('/db', db_modul);
+app.use('/file', file_modul);
+app.use('/email', email_modul);
 
 app.get("/", (req, res) => {
     res.send("Backend API get /");
@@ -59,19 +55,6 @@ app.get('/:crypto', (req, res) => {
 
 app.get();
 
-
-function getOperator(op){
-  switch (op){
-      case "eq": op = "=";break;
-      case "lt": op = "<";break;
-      case "gt": op = ">";break;
-      case "lte": op = "<=";break;
-      case "gte": op = ">=";break;
-      case "not": op = "!=";break;
-      case "lk": op = "like";break;
-  }
-  return op
-}
   
 app.listen(port, () => {
     console.log(`Server running on: ${port} port`);
