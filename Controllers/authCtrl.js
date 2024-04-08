@@ -1,5 +1,6 @@
 app.controller("authCtrl", function($scope, $rootScope, $location) {
     $scope.user = {};
+    $scope.users = {};
 
     const toastTrigger = document.getElementById('liveToastBtn')
     const toastLiveExample = document.getElementById('liveToast')
@@ -51,7 +52,7 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
                     pass: CryptoJS.SHA1(pass).toString()
                 }
             }
-            axios.post(serverUrl, request).then(res =>{
+            axios.post($rootScope.serverUrl+'/db/users', data).then(res =>{
                 toastcontent.innerText = "Sikeres regisztráció!"
                 toastBootstrap.show()
                 $scope.user = {};

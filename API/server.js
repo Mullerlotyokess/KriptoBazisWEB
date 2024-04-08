@@ -7,7 +7,7 @@ const port = process.env.PORT;
 const cors = require("cors");
 const axios = require('axios');
 
-var pool  = mysql.createPool({
+var pool = mysql.createPool({
     connectionLimit : 10,
     host            : process.env.DBHOST,
     user            : process.env.DBUSER,
@@ -56,6 +56,22 @@ app.get('/:crypto', (req, res) => {
     });
   
   });
+
+app.get();
+
+
+function getOperator(op){
+  switch (op){
+      case "eq": op = "=";break;
+      case "lt": op = "<";break;
+      case "gt": op = ">";break;
+      case "lte": op = "<=";break;
+      case "gte": op = ">=";break;
+      case "not": op = "!=";break;
+      case "lk": op = "like";break;
+  }
+  return op
+}
   
 app.listen(port, () => {
     console.log(`Server running on: ${port} port`);
