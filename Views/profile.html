@@ -1,3 +1,43 @@
 <div class="container">
-    profil nézet
+        <div class="leftside"> 
+            <h4>Profilkép</h4>
+            <img src="/Assets/img/pfp.png" title="Válts profil képet" class="profilepicture" ng-click="">
+            <br>
+            <br>
+            <h5>Közösségi profilok (hivatkozás)</h5>
+            <i class="bi bi-github"></i>
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-linkedin"></i>
+            <input type="text" name="" id="" class="linktexts">
+            <br>
+            <input type="text" name="" id="" class="linktexts">
+            <br>
+            <input type="text" name="" id="" class="linktexts">
+            <br>
+            <input type="text" name="" id="" class="linktexts">
+
+        </div>
+            <div class="row profiletexts">
+                <form action="" id="profileForm">
+                    <h1>Profil Szerkesztése</h1>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control w-75" id="nickname" ng-model="user.nickname">
+                        <label for="text">Becenév (Megjelenítendő név)</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="textarea" class="form-control w-75 " id="bio" ng-model="user.bio">
+                        <label for="pass">Leírás (Bio):</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control w-75" id="pronouns" ng-model="user.pronouns">
+                        <label for="pass">Névmások (x/y):</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control w-75" id="location" ng-model="user.location">
+                        <label for="pass">Lakhely (Ország):</label>
+                    </div>
+                    <input type="button" class="btn btn-primary" value="Mentés" id="profileBtn" ng-click="profilmodositas()">
+                </form>
+            </div>
 </div>

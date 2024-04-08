@@ -264,7 +264,33 @@ li{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.flex{
-    
+
+.profilepicture{
+    width: 300px;
+    height: 300px;
+    border: 3px rgb(2,0,36) solid;
+    border-radius: 50%;
+}
+.profilepicture:hover{
+    cursor: pointer;
+}
+
+#profileBtn{
+    font-size: 150%;
+}
+
+.profiletexts{
+    padding-left: 5%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.leftside{
+    float: left;
+    font-family: defaultfont;
+}
+
+.linktexts{
+    margin-bottom: 5px;
+    width: 100%;
 }
 
