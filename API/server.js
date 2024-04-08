@@ -51,9 +51,9 @@ app.get('/:crypto', (req, res) => {
   
     });
   
-  });
+});
 
-app.get();
+
 
   
 app.listen(port, () => {
