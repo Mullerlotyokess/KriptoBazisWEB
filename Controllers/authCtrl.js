@@ -38,21 +38,19 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
             return;    
         }
 
-        axios.get(serverUrl+'?table=users&field=email&value='+email).then(res =>{
+        axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
             if(res.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
                 return;
             }
-            let request = {
-                table: 'users', 
-                data: { 
-                    username, 
-                    email, 
-                    pass: CryptoJS.SHA1(pass).toString()
-                }
+            newUser = {
+                username: username,
+                email: email,
+                pass: pass
             }
-            axios.post($rootScope.serverUrl+'/db/users', data).then(res =>{
+            
+            axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
                 toastcontent.innerText = "Sikeres regisztráció!"
                 toastBootstrap.show()
                 $scope.user = {};
