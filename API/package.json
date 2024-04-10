@@ -21,7 +21,8 @@
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "ng-notify": "^0.7.1",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

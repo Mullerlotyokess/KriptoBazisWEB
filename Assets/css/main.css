@@ -230,7 +230,7 @@ footer{
 .container{
     
     margin-top: 25px;
-    
+    float: left;
 }
 
 .form-control{
