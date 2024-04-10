@@ -1,8 +1,6 @@
 app.controller("authCtrl", function($scope, $rootScope, $location) {
     $scope.user = {};
-    $scope.users = {};
 
-    const toastTrigger = document.getElementById('liveToastBtn')
     const toastLiveExample = document.getElementById('liveToast')
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
 
@@ -13,8 +11,9 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
     $scope.regisztracio = function(){
 
         console.log($rootScope.serverUrl)
+        console.log($scope.user.email)
 
-        const {username, email, pass, passconfirm} = $scope.user;
+        let {username, email, pass, passconfirm} = $scope.user;
 
         if (username == null || email == null || pass == null || passconfirm == null){
             toastcontent.innerText = "Nem adtál meg minden adatot!"
@@ -40,24 +39,27 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
             return;    
         }
 
-        axios.get(`${$rootScope.serverUrl}/kriptobazis/users/email/eq/${$scope.user.email}`).then(res =>{
+
+        axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
+            console.log(res.data)
             if(res.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
-                return;
             }
-            newUser = {
-                username: username,
-                email: email,
-                pass: pass,
-                privilege: "felhasználó"
+            else{
+                newUser = {
+                    username: username,
+                    email: email,
+                    pass: pass,
+                    privilege: "felhasználó"
+                }
+                
+                axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
+                    toastcontent.innerText = "Sikeres regisztráció!"
+                    toastBootstrap.show()
+                    $scope.user = {};
+                });
             }
-            
-            axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
-                toastcontent.innerText = "Sikeres regisztráció!"
-                toastBootstrap.show()
-                $scope.user = {};
-            });
         });
 
     }
@@ -67,7 +69,7 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
 
         toastcontent.innerText = "";
 
-        const { email, pass } = $scope.user;
+        let { email, pass } = $scope.user;
 
         if (email == null || pass == null){
             toastcontent.innerText = "Nem adtál meg minden adatot!"

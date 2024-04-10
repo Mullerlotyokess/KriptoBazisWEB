@@ -55,11 +55,22 @@ router.get('/get_crypto_data/:crypto', (req, res) => {
 
 
 router.post("/users", (req,res) => {
+  console.log(req)
 
-  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}', ${req.body.privilege})`, (err, results) => {
-      console.log("Sikeres regisztráció!")
-      res.send(res.data);
+  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}', '${req.body.privilege}')`, (err, results) => {
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatfelvétel.', data: results})
+    
   });
+});
+
+router.get("/users/email/:op/:value", (req,res) => {
+    let value = req.params.value;
+    let op = getOperator(req.params.op);
+    pool.query(`SELECT * FROM users WHERE email ${op} '${value}'`, (err, results) =>{
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatkérés.', data: results})
+    })
 });
 
 router.get("/users", (req, res) => {
@@ -79,4 +90,4 @@ pool.getConnection((err, connection) =>{
   console.log("Sikeres csatlakozás")
 })
 
-module.exports =  router;
+module.exports = router;
