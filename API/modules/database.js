@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
     res.send('Simpe NodeJS Backend API');
 });
 
-router.get('/:crypto', (req, res) => {
+router.get('/get_crypto_data/:crypto', (req, res) => {
     const crypto = req.params.crypto
     // URL BRINGS BACK ALL INFO OF THE TOKEN 
     const url = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?symbol=${crypto}`
@@ -56,8 +56,9 @@ router.get('/:crypto', (req, res) => {
 
 router.post("/users", (req,res) => {
 
-  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}')`, (err, results) => {
-      
+  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}', ${req.body.privilege})`, (err, results) => {
+      console.log("Sikeres regisztráció!")
+      res.send(res.data);
   });
 });
 

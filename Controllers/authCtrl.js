@@ -12,6 +12,8 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
 
     $scope.regisztracio = function(){
 
+        console.log($rootScope.serverUrl)
+
         const {username, email, pass, passconfirm} = $scope.user;
 
         if (username == null || email == null || pass == null || passconfirm == null){
@@ -38,7 +40,7 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
             return;    
         }
 
-        axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
+        axios.get(`${$rootScope.serverUrl}/kriptobazis/users/email/eq/${$scope.user.email}`).then(res =>{
             if(res.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
@@ -47,7 +49,8 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
             newUser = {
                 username: username,
                 email: email,
-                pass: pass
+                pass: pass,
+                privilege: "felhasználó"
             }
             
             axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
