@@ -4,7 +4,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
     const toastLiveExample = document.getElementById('liveToast')
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
 
-    const { passwordRegExp, serverUrl } = $rootScope;
+    const {emailRegExp ,passwordRegExp, serverUrl } = $rootScope;
     let toastcontent = document.getElementById('toastcontent');
     
 
@@ -44,7 +44,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
             console.log(res.data)
-            if(res.data.length < 0){
+            if(res.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
             }
@@ -53,7 +53,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
                     username: username,
                     email: email,
                     pass: CryptoJS.SHA1(pass),
-                    privilege: "felhasználó"
+                    privilege: "felh"
                 }
                 
                 axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{

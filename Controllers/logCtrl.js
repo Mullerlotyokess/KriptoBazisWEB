@@ -25,11 +25,6 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
           toastBootstrap.show()
           return; 
         }
-
-     
-        axios.get(`${rootScope.serverUrl}/db/logincheck`).then(res =>{
-
-        })
     }
 
 
@@ -50,12 +45,24 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             return; 
         }
 
-        
+        axios.get(`${rootScope.serverUrl}/db/email/eq/${email}`).then(res =>{
+            if (res.data.length <= 0) {
+                toastcontent.innerText = "Nincs ilyen E-mail cím regisztrálva!"
+                toastBootstrap.show()
+                
+            }
+            else{
+                toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
+                toastBootstrap.show()
+            }
+
+
+          
+        });
             
-        toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
-        toastBootstrap.show()
+        
         
     
     }
-})
+});
 
