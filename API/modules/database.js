@@ -84,6 +84,10 @@ router.get("/users", (req, res) => {
   });
 });
 
+
+
+
+
 pool.getConnection((err, connection) =>{
   if (err) {
       return err;

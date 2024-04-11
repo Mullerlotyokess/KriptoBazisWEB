@@ -24,11 +24,11 @@ app.config(($routeProvider) => {
         })
         .when('/login', {
             templateUrl: 'Views/login.html',
-            controller: 'authCtrl'
+            controller: 'logCtrl'
         })
         .when('/register', {
             templateUrl: 'Views/register.html',
-            controller: 'authCtrl'
+            controller: 'regCtrl'
         })
         .when('/wiki', {
             templateUrl: 'Views/wiki.html',

@@ -3,11 +3,11 @@
         <form action="" id="loginForm">
             <h1>Bejelentkezés</h1>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control w-50" id="email">
+                <input type="text" class="form-control w-50" id="email" ng-model="user.email">
                 <label for="email">E-mail Cím</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control w-50" id="pass">
+                <input type="password" class="form-control w-50" id="pass" ng-model="user.pass">
                 <span></span>
                 <label for="pass">Jelszó</label>
             </div>

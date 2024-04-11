@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $rootScope, $location) {
+app.controller("regCtrl", function($scope, $rootScope, $location) {
     $scope.user = {};
 
     const toastLiveExample = document.getElementById('liveToast')
@@ -39,10 +39,12 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
             return;    
         }
 
+        
+
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
             console.log(res.data)
-            if(res.data.length > 0){
+            if(res.data.length < 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
             }
@@ -62,38 +64,5 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
             }
         });
 
-    }
-
-
-    $scope.bejelentkezes= function() {
-
-        toastcontent.innerText = "";
-
-        let { email, pass } = $scope.user;
-
-        if (email == null || pass == null){
-            toastcontent.innerText = "Nem adtál meg minden adatot!"
-            toastBootstrap.show()
-            return;
-        }
-        
-        if (!email.includes('@')) {
-          toastcontent.innerText = "Nem jó E-mail formátum!"
-          toastBootstrap.show()
-          return; 
-        }
-
-     
-        axios.get(`${rootScope.serverUrl}/db/logincheck`).then(res =>{
-            
-        })
-    }
-    $scope.passReset = function()
-    {
-    
-      toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
-      toastBootstrap.show()
-        
-    
     }
 })
