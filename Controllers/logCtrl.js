@@ -19,12 +19,24 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             toastBootstrap.show()
             return;
         }
-        
-        if (!email.includes('@')) {
-          toastcontent.innerText = "Nem jó E-mail formátum!"
-          toastBootstrap.show()
-          return; 
+        else{
+            let data = {
+                'email': email,
+                'pass': CryptoJS.SHA1(pass).toString()
+            }
+           
         }
+        
+
+       
+    }
+
+    $scope.getUsers = function(){
+        axios.get($rootScope.serverUrl+'/db/users', $rootScope.token).then(res => {
+            $scope.users = res.data;
+            $scope.$apply();
+        });
+    
     }
 
 

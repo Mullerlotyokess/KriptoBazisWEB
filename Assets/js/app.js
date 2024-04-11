@@ -20,7 +20,7 @@ app.run(($rootScope) => {
 app.config(($routeProvider) => {
     $routeProvider
         .when('/main', {
-            templateUrl: 'Views/main.html'
+            templateUrl: 'Views/main.html',
         })
         .when('/login', {
             templateUrl: 'Views/login.html',
@@ -32,23 +32,59 @@ app.config(($routeProvider) => {
         })
         .when('/wiki', {
             templateUrl: 'Views/wiki.html',
-            controller: 'wikiCtrl'
+            controller: 'wikiCtrl',
+            /*resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }*/
         })
         .when('/news', {
             templateUrl: 'Views/news.html',
-            controller: 'newsCtrl'
+            controller: 'newsCtrl',
+            /*resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }*/
+            
         })
         .when('/currencies', {
             templateUrl: 'Views/currencies.html',
-            controller: 'currenciesCtrl'
+            controller: 'currenciesCtrl',
+            /*resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }*/
         })
         .when('/forum', {
             templateUrl: 'Views/forum.html',
-            controller: 'forumCtrl'
+            controller: 'forumCtrl',
+            /*resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }*/
         })
         .when('/profile', {
             templateUrl: 'Views/profile.html',
-            controller: 'profileCtrl'
+            controller: 'profileCtrl',
+            /*resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }*/
         })
         .otherwise({
             redirectTo: '/main'

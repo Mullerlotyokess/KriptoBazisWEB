@@ -65,14 +65,6 @@ router.post("/users", (req,res) => {
   });
 });
 
-router.get("/users/email/:op/:value", (req,res) => {
-    let value = req.params.value;
-    let op = getOperator(req.params.op);
-    pool.query(`SELECT email FROM users WHERE email ${op} '${value}'`, (err, results) =>{
-      if (err) return res.send({message: 'Hiba történt!'}) 
-      res.send({message: 'Sikeres adatkérés.', data: results})
-    })
-});
 
 router.get("/users", (req, res) => {
   console.log(req)
@@ -84,7 +76,14 @@ router.get("/users", (req, res) => {
   });
 });
 
-
+router.get("/users/email/:op/:value", (req,res) => {
+    let value = req.params.value;
+    let op = getOperator(req.params.op);
+    pool.query(`SELECT email FROM users WHERE email ${op} '${value}'`, (err, results) =>{
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatkérés.', data: results})
+    })
+});
 
 
 

@@ -50,10 +50,10 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
             }
             else{
                 newUser = {
-                    username: username,
-                    email: email,
-                    pass: CryptoJS.SHA1(pass),
-                    privilege: "felh"
+                    'username': username,
+                    'email': email,
+                    'pass': CryptoJS.SHA1(pass),
+                    'privilege': "felh"
                 }
                 
                 axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
