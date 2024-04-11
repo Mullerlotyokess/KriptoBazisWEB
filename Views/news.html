@@ -1,3 +1,37 @@
 <div class="NewsPage">
-    admin felület a híreknek
+    <h3>Hírek létrehozása</h3>
+    <hr>
+
+    <div class="newsCMS">
+        <form>
+            <fieldset>
+                <legend>Tartalom beillesztése</legend>
+                <hr>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Hír címe</label>
+                        <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="news.title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Szerző</label>
+                        <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="news.author">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Dátum</label>
+                        <input type="date" class="form-control w-50" id="exampleFormControlInput1" ng-model="news.date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Hír leírása</label>
+                        <textarea class="form-control w-75" id="exampleFormControlTextarea1" ng-model="news.content"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success" id="newsBtn" ng-click="insert()">Beillesztés</button>
+                    <button type="button" class="btn btn-danger" id="newsdltBtn" ng-click="delete()">Törlés</button>
+                </form>
+                
+            </fieldset>
+        </form>
+    </div>
 </div>
