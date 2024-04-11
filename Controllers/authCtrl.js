@@ -50,7 +50,7 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
                 newUser = {
                     username: username,
                     email: email,
-                    pass: pass,
+                    pass: CryptoJS.SHA1(pass),
                     privilege: "felhasználó"
                 }
                 
@@ -83,20 +83,10 @@ app.controller("authCtrl", function($scope, $rootScope, $location) {
           return; 
         }
 
-        let request = {
-            logincheck: true,
-            table: 'users',
-            email, 
-            pass: CryptoJS.SHA1(pass).toString()
-        }
-
-        axios.post(serverUrl, request).then(res => {
-            if(res.data == false){
-                toastcontent.innerText = "Rossz E-mail/Jelszó!"
-                toastBootstrap.show()
-                return;
-            }
-        });
+     
+        axios.get(`${rootScope.serverUrl}/db/logincheck`).then(res =>{
+            
+        })
     }
     $scope.passReset = function()
     {
