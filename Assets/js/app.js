@@ -15,6 +15,10 @@ app.run(($rootScope) => {
         token = JSON.parse(sessionStorage.getItem('access_token'));
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
+
+    $rootScope.kijelentkezes = function(){
+        $rootScope.loggedIn = false
+    }
 });
 
 app.config(($routeProvider) => {
