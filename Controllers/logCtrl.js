@@ -26,17 +26,6 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             }
            
         }
-        
-
-       
-    }
-
-    $scope.getUsers = function(){
-        axios.get($rootScope.serverUrl+'/db/users', $rootScope.token).then(res => {
-            $scope.users = res.data;
-            $scope.$apply();
-        });
-    
     }
 
 
@@ -57,13 +46,17 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             return; 
         }
 
-        axios.get(`${rootScope.serverUrl}/db/email/eq/${email}`).then(res =>{
-            if (res.data.length <= 0) {
+        axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
+            if (res.data.length < 0) {
                 toastcontent.innerText = "Nincs ilyen E-mail cím regisztrálva!"
                 toastBootstrap.show()
                 
             }
             else{
+                axios.post(`${$rootScope.serverUrl}/db/send`).then(res =>{
+
+                })
+
                 toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
                 toastBootstrap.show()
             }

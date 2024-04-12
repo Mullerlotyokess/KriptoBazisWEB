@@ -19,12 +19,13 @@ var pool  = mysql.createPool({
 });
 
 
-// ENDPOINTS
+// Endpointok
 
 router.get('/', function (req, res) {
     res.send('Simpe NodeJS Backend API');
 });
 
+// Crypto adatok lekérése coin alapján
 router.get('/get_crypto_data/:crypto', (req, res) => {
     const crypto = req.params.crypto
     // URL BRINGS BACK ALL INFO OF THE TOKEN 
@@ -54,7 +55,7 @@ router.get('/get_crypto_data/:crypto', (req, res) => {
   
 });
 
-
+// Felhasználó adatainak feltöltése
 router.post("/users", (req,res) => {
   console.log(req)
 
@@ -65,7 +66,7 @@ router.post("/users", (req,res) => {
   });
 });
 
-
+// Felhasználó adatainak lekérése
 router.get("/users", (req, res) => {
   console.log(req)
 
@@ -76,6 +77,8 @@ router.get("/users", (req, res) => {
   });
 });
 
+
+// megadott Email-cím lekérése
 router.get("/users/email/:op/:value", (req,res) => {
     let value = req.params.value;
     let op = getOperator(req.params.op);
