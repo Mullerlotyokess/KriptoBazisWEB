@@ -12,6 +12,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
         console.log($rootScope.serverUrl)
         console.log($scope.user.email)
+        console.log($scope.user.pass)
 
         let {username, email, pass, passconfirm} = $scope.user;
 
@@ -44,7 +45,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
             console.log(res.data)
-            if(res.data.length > 0){
+            if(res.data.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
             }
@@ -52,8 +53,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
                 newUser = {
                     'username': username,
                     'email': email,
-                    'pass': CryptoJS.SHA1(pass),
-                    'privilege': "felh"
+                    'pass': CryptoJS.SHA1(pass).toString()
                 }
                 
                 axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{

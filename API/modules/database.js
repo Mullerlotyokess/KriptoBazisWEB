@@ -59,7 +59,7 @@ router.get('/get_crypto_data/:crypto', (req, res) => {
 router.post("/users", (req,res) => {
   console.log(req)
 
-  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}', '${req.body.privilege}')`, (err, results) => {
+  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}')`, (err, results) => {
       if (err) return res.send({message: 'Hiba történt!'}) 
       res.send({message: 'Sikeres adatfelvétel.', data: results})
     
