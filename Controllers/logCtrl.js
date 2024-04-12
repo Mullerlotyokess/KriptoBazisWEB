@@ -24,6 +24,24 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
                 'email': email,
                 'pass': CryptoJS.SHA1(pass).toString()
             }
+
+            axios.post($rootScope.serverUrl + '/db/logincheck', data).then(res=>{
+                console.log(res.data.data)
+                if (res.data.data.token != ''){
+                    sessionStorage.setItem('access_token', JSON.stringify(res.data.data[0].token));
+                    
+                    token = JSON.parse(sessionStorage.getItem('access_token'));
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                    
+                    $rootScope.loggedIn = true;
+                    $location.path('/profile');
+                    $scope.$apply();
+                }else{
+                    toastcontent.innerText = "Nem jó adatokat adott meg!"
+                    toastBootstrap.show()
+                }
+
+            });
            
         }
     }

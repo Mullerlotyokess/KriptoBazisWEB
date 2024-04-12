@@ -17,7 +17,25 @@ app.run(($rootScope) => {
     }
 
     $rootScope.kijelentkezes = function(){
-        $rootScope.loggedIn = false
+        sessionStorage.removeItem('access_token');
+        axios.defaults.headers.common['Authorization'] = ``;
+        $rootScope.loggedIn = false;
+        $location.path('/login');
+    }
+
+    $rootScope.getLoggedUserData = function(token){
+        
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace('-', '+').replace('_', '/');
+        user = JSON.parse($window.atob(base64));
+
+        loggedUser = {
+            ID: user.ID,
+            name: user.username,
+            email: user.email
+        }
+
+        return  loggedUser;
     }
 });
 
@@ -37,61 +55,98 @@ app.config(($routeProvider) => {
         .when('/wiki', {
             templateUrl: 'Views/wiki.html',
             controller: 'wikiCtrl',
-            /*resolve: {
+            resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
                         $location.path('/');
                     }
                 }
-            }*/
+            }
         })
         .when('/news', {
             templateUrl: 'Views/news.html',
             controller: 'newsCtrl',
-            /*resolve: {
+            resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
                         $location.path('/');
                     }
                 }
-            }*/
+            }
             
         })
         .when('/currencies', {
             templateUrl: 'Views/currencies.html',
             controller: 'currenciesCtrl',
-            /*resolve: {
+            resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
                         $location.path('/');
                     }
                 }
-            }*/
+            }
         })
         .when('/forum', {
             templateUrl: 'Views/forum.html',
             controller: 'forumCtrl',
-            /*resolve: {
+            resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
                         $location.path('/');
                     }
                 }
-            }*/
+            }
         })
         .when('/profile', {
             templateUrl: 'Views/profile.html',
             controller: 'profileCtrl',
-            /*resolve: {
+            resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
                         $location.path('/');
                     }
                 }
-            }*/
+            }
         })
         .otherwise({
             redirectTo: '/main'
         });
 }
 );
+
+app.directive('fileModel', function($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function() {
+                scope.$apply(function() {
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+});
+
+app.service('fileUpload', function($q) {
+
+    this.uploadFileToUrl = function(file, uploadUrl, uploadName) {
+        var fd = new FormData();
+        fd.append(uploadName, file);
+     
+        var deffered = $q.defer();
+     
+        axios.post(uploadUrl+'?uploadName='+uploadName, fd).then(
+            function(res) {
+                deffered.resolve(res);
+            },
+            function(err) {
+                deffered.reject(err);
+            }
+        );
+     
+        return deffered.promise;
+    }
+});

@@ -4,13 +4,10 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT;
 
+// Modulok
 var db_modul = require('./modules/database');
 var file_modul = require('./modules/fileupload');
 var email_modul = require('./modules/email');
-
-
-
-// MIDDLEWARE FUNCTION
 
 app.use(express.urlencoded({extended: true}))
 app.use(cors());

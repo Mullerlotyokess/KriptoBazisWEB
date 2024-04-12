@@ -9,6 +9,8 @@ const axios  = require('axios');
 const request = require('request')
 var CryptoJS = require("crypto-js");
 
+
+// Adatbázis
 var pool  = mysql.createPool({
   connectionLimit : 10,
   host            : process.env.DBHOST,
@@ -86,6 +88,35 @@ router.get("/users/email/:op/:value", (req,res) => {
       if (err) return res.send({message: 'Hiba történt!'}) 
       res.send({message: 'Sikeres adatkérés.', data: results})
     })
+});
+
+
+router.post('/logincheck', (req, res)=>{
+
+    let table = 'users';
+    let field1 = 'email';
+    let field2 = 'pass';
+    let value1 = req.body.email;
+    let value2 = req.body.pass;
+   
+
+    pool.query(`SELECT * FROM ${table} WHERE ${field1}='${value1}' AND ${field2}='${value2}'`, (err, results)=>{
+
+       if (results.length > 0){
+           let user = {
+               ID: results[0].ID,
+               name: results[0].username,
+               email: results[0].email
+            }   
+            results[0] ={ token: jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})};
+        }
+        else
+        {
+            results[0] = { token: '' }
+        }
+        if (err) return res.send({message: 'Hiba történt!'}) 
+        res.send({message: 'Sikeres adatkérés.', data: results})
+    });
 });
 
 

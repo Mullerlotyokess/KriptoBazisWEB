@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 
   
-// change operator value
+// operátor átalakítása
 function getOperator(op){
     switch(op){
         case 'eq': {op = '='; break}
