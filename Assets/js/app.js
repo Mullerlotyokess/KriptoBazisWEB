@@ -23,8 +23,7 @@ app.run(($rootScope) => {
         $location.path('/login');
     }
 
-    $rootScope.getLoggedUserData = function(token){
-        
+    $rootScope.getLoggedUserData = function(token) {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace('-', '+').replace('_', '/');
         user = JSON.parse($window.atob(base64));
@@ -37,6 +36,8 @@ app.run(($rootScope) => {
 
         return  loggedUser;
     }
+
+ 
 });
 
 app.config(($routeProvider) => {
