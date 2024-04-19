@@ -36,7 +36,8 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
                     $rootScope.loggedIn = true;
                     $location.path('/profile');
                     $scope.$apply();
-                }else{
+                }
+                else{
                     toastcontent.innerText = "Nem jó adatokat adott meg!"
                     toastBootstrap.show()
                 }
@@ -47,7 +48,7 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
     }
 
 
-    $scope.passReset = function()
+    $scope.emailSend = function()
     {
         const { email } = $scope.user;
         
@@ -65,15 +66,25 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
         }
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
-            if (res.data.length < 0) {
+            if (res.data.data.length <= 0) {
                 toastcontent.innerText = "Nincs ilyen E-mail cím regisztrálva!"
                 toastBootstrap.show()
                 
             }
             else{
-                axios.post(`${$rootScope.serverUrl}/db/send`).then(res =>{
+                let message = `<body><h1>Elfelejtett adatok: </h1></body>`;
+
+                let data = {
+                    to: email,
+                    subject: 'Elfelejtett adatok - Kripto Bázis',
+                    message: message
+                }
+
+                axios.post($rootScope.serverUrl + '/email/send', data).then(res=>{
+                    alert(res.data);
 
                 })
+             
 
                 toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
                 toastBootstrap.show()

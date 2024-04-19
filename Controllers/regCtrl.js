@@ -1,6 +1,7 @@
 app.controller("regCtrl", function($scope, $rootScope, $location) {
     $scope.user = {};
 
+   
     const toastLiveExample = document.getElementById('liveToast')
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
 
@@ -55,11 +56,16 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
                     'email': email,
                     'pass': CryptoJS.SHA1(pass).toString()
                 }
+
+                
                 
                 axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
                     toastcontent.innerText = "Sikeres regisztráció!"
                     toastBootstrap.show()
+                    
                     $scope.user = {};
+
+                    
                 });
             }
         });

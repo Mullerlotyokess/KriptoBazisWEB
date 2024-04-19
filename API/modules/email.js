@@ -23,14 +23,14 @@ router.post('/send', (req, res)=>{
 
     transport.sendMail(mailOptions, (err, info)=>{
         if (err) {
-            console.log(error(`E-mail sending failed! - ${err}`));
+            console.log((`E-mail küldés sikertelen! - ${err}`));
         }else
         {
-            console.log(notice(`E-mail sent successfully! - ${info}`));
+            console.log((`E-mail küldés sikeres! - ${info}`));
         }
     });
 
-    res.send('Email sent to the target...');
+    res.send('Email elküldve...');
 });
 
 module.exports = router;

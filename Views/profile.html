@@ -1,29 +1,29 @@
 <div class="container">
         <div class="leftside"> 
             <h4>Profilkép</h4>
-            <img src="/Assets/img/pfp.png" title="Válts profil képet" class="profilepicture" ng-click="" ng-model="user.pfp">
+            <img src="/Assets/img/pfp.png" title="Válts profil képet" class="profilepicture" ng-click="" ng-model="profile.pfp">
             <br><br><input type="file"><br><br>
             <h5>Közösségi profil (hivatkozás)</h5>
             <i class="bi bi-github"></i>
             <i class="bi bi-facebook"></i>
             <i class="bi bi-instagram"></i>
             <i class="bi bi-linkedin"></i>
-            <input type="text" name="" id="" class="linktexts" ng-model="user.social">
+            <input type="text" name="" id="" class="linktexts" ng-model="profile.social">
 
         </div>
             <div class="row profiletexts">
                 <form action="" id="profileForm">
                     <h1>Profil Szerkesztése</h1>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control w-75" id="nickname" ng-model="user.nickname">
+                        <input type="text" class="form-control w-75" id="nickname" ng-model="profile.nickname">
                         <label for="text">Becenév (Megjelenítendő név)</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control w-75" id="status" ng-model="user.status">
+                        <input type="text" class="form-control w-75" id="status" ng-model="profile.status">
                         <label for="pass">Egyéni állapotüzenet:</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control w-75" id="location" ng-model="user.location">
+                        <input type="text" class="form-control w-75" id="location" ng-model="profile.location">
                         <label for="pass">Lakhely (Ország):</label>
                     </div>
                     <input type="button" class="btn btn-primary" value="Mentés" id="profileBtn" ng-click="profilmodositas()">

@@ -1,6 +1,6 @@
 var app = angular.module('KriptoBazisAPP', ['ngRoute', 'ngNotify']);
 
-app.run(($rootScope) => {
+app.run(($rootScope, $location) => {
     $rootScope.loggedIn = false;
     $rootScope.pageTitle = "Kripto Bázis";
 
@@ -11,9 +11,9 @@ app.run(($rootScope) => {
     $rootScope.appUrl = 'http://127.0.0.1:5500/index.html';
 
     if (sessionStorage.getItem('access_token')) {
-        $rootScope.loggedIn = true;
         token = JSON.parse(sessionStorage.getItem('access_token'));
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        $rootScope.loggedIn = true;
     }
 
     $rootScope.kijelentkezes = function(){
