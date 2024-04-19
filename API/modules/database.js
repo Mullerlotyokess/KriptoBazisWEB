@@ -30,9 +30,8 @@ router.get('/', function (req, res) {
 // Crypto adatok lekérése coin alapján
 router.get('/get_crypto_data/:crypto', (req, res) => {
     const crypto = req.params.crypto
-    // URL BRINGS BACK ALL INFO OF THE TOKEN 
+    
     const url = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?symbol=${crypto}`
-    // URL2 BRINGS BACK THE CURRENT QUOTE AND PRICE DATA
     const url2 = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=${crypto}`
   
     request.get({
@@ -90,7 +89,7 @@ router.get("/users/email/:op/:value", (req,res) => {
     })
 });
 
-
+//Bejelentkezés validálása
 router.post('/logincheck', (req, res)=>{
 
     let table = 'users';
@@ -119,6 +118,23 @@ router.post('/logincheck', (req, res)=>{
     });
 });
 
+//hírek feltöltése adatbázisba
+router.post('/news', (req, res) =>{
+    pool.query(`INSERT INTO news VALUES (null, '${req.body.title}', '${req.body.author}', '${req.body.content}', '${req.body.date}')`, (err, results) => {
+        if (err) return res.send({message: 'Hiba történt!'}) 
+        res.send({message: 'Sikeres adatfelvétel.', data: results})
+    
+    });
+})
+
+
+//hírek lekérése adatbázisból
+router.get('/news', (req, res) =>{
+    pool.query(`SELECT * FROM news`, (err, results) =>{
+        if (err) return res.send({message: 'Hiba történt!'}) 
+        res.send({message: 'Sikeres adatkérés.', data: results})
+    })
+})
 
 
 pool.getConnection((err, connection) =>{
