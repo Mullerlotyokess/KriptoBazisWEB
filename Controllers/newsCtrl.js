@@ -1,7 +1,7 @@
 app.controller("newsCtrl", function($scope, $rootScope, $location) {
 
     $scope.new = {};
-    $scope.news = {};
+    $scope.news = [];
 
     const toastLiveExample = document.getElementById('liveToast')
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
@@ -9,26 +9,42 @@ app.controller("newsCtrl", function($scope, $rootScope, $location) {
 
     $scope.insert = function(){
 
-        if ($scope.new.title == null || $scope.new.author == null || $scope.new.date == null || $scope.new.content == null){
-            toastcontent.innerText = "Nem adtál meg minden adatot!";
+        let { title, author, date, content } = $scope.new;
+
+        if (title == null || author == null || date == null || content == null){
+            toastcontent.innerText = "Tölts ki minden mezőt!";
             toastBootstrap.show();
 
         }
         else{
 
-            let data = {
-                'title': $scope.new.title,
-                'author': $scope.new.author,
-                'date': $scope.new.date,
-                'content': $scope.new.content
+            data = {
+                'title': title,
+                'author': author,
+                'date': date,
+                'content': content
             }
 
-            axios.post($rootScope.serverUrl + '/db/news', data).then(res =>{
+            axios.post(`${$rootScope.serverUrl}/db/news`, data).then(res =>{
                 console.log(res.data.data)
+                toastcontent.innerText = "Sikeres hírfeltöltés!"
+                toastBootstrap.show();
+
+                $scope.new = {};
             })
         }
 
-        console.log($rootScope.news)
-        console.log($scope.new)
+       
+    }
+
+    $scope.delete = function()
+    {
+        $scope.new.title = ""
+        $scope.new.author = ""
+        $scope.new.date = ""
+        $scope.new.content = ""
+
+        toastcontent.innerText = "Mezők ürítve!"
+        toastBootstrap.show()
     }
 });
