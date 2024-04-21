@@ -1,11 +1,32 @@
+<div class="loaderpos" ng-if="news.length == 0" id="newsloader">
+    <div id="loader"></div>
+     <span id="loaderText">Hírek betöltése...</span>
+</div>
+
 <div class="welcomePage">
+    <button class="btn btn-warning" ng-click="refreshNews()" id="refreshBtn">Hírek frissítése</button>
     <div class="newsWindow" id="newsWindow">
-        <div ng-repeat="new in news">
-            <h1 id="titleh1">{{new.title}}</h1><h2 id="authorh2">{{new.author}}</h2>
+        <div ng-repeat="data in news">
+            <h1 id="titleh1">{{data.title}}</h1><h2 id="authorh2">szerző: {{data.author}}</h2>
             <p id="newsParagraph">
-                {{new.content}}
+                {{data.content}}
             </p>
-            <h3 id="newsDate">{{new.date}}</h3>
+            <h3 id="newsDate">dátum: {{data.date}}</h3>
         </div>
     </div>
 </div>
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-currency-bitcoin bitcoinicon"></i>
+        <strong class="me-auto">Kripto Bázis</strong>
+        <small>Épp most</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastcontent">
+          
+      </div>
+    </div>
+  </div>

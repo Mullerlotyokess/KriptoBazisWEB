@@ -130,7 +130,7 @@ router.post('/news', (req, res) =>{
 
 //hírek lekérése adatbázisból
 router.get('/news', (req, res) =>{
-    pool.query(`SELECT * FROM news`, (err, results) =>{
+    pool.query(`SELECT title, author, content, date FROM news`, (err, results) =>{
         if (err) return res.send({message: 'Hiba történt!'}) 
         res.send({message: 'Sikeres adatkérés.', data: results})
     })

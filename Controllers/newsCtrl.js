@@ -37,6 +37,26 @@ app.controller("newsCtrl", function($scope, $rootScope, $location) {
        
     }
 
+    $scope.refreshNews = function()
+    {
+        document.getElementById('newsloader').style.visibility = "visible";
+
+
+        setInterval(() => {
+            axios.get(`${$rootScope.serverUrl}/db/news`).then(res => {
+                console.log(res.data.data);
+    
+                $scope.news = res.data.data;
+    
+                console.log($scope.news)
+                toastcontent.innerText = "Hírek frissítve!";
+                toastBootstrap.show();
+                $scope.$apply();
+            });
+        }, 3000);
+       
+    }
+
     $scope.delete = function()
     {
         $scope.new.title = ""

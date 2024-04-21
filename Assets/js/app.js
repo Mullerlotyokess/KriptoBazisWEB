@@ -44,6 +44,7 @@ app.config(($routeProvider) => {
     $routeProvider
         .when('/main', {
             templateUrl: 'Views/main.html',
+            controller: 'newsCtrl'
         })
         .when('/login', {
             templateUrl: 'Views/login.html',
