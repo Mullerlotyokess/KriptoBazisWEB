@@ -27,17 +27,21 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
 
             axios.post($rootScope.serverUrl + '/db/logincheck', data).then(res=>{
                 console.log(res.data.data)
-                if (res.data.data.token != ''){
+                if (res.data.data[0].token != ''){
                     sessionStorage.setItem('access_token', JSON.stringify(res.data.data[0].token));
-                    
+                    console.log("Van token!")
                     token = JSON.parse(sessionStorage.getItem('access_token'));
                     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                     
+
+                    
+
                     $rootScope.loggedIn = true;
                     $location.path('/profile');
                     $scope.$apply();
                 }
                 else{
+                    console.log("Nincs token!")
                     toastcontent.innerText = "Nem jó adatokat adott meg!"
                     toastBootstrap.show()
                 }

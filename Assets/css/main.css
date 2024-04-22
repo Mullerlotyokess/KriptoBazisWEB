@@ -370,8 +370,21 @@ table{
     border-collapse: collapse !important;
 }
 
+.forumPage{
+    top: 50%;
+    transform: translate(0, 35%);
+}
 
+#forumIMG{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5px;
+}
 
+#btcforumIMG{
+    width: 69%;
+    margin-left: 15%;
+}
 
 
 #loader {

@@ -10,6 +10,9 @@ app.run(($rootScope, $location) => {
     $rootScope.serverUrl = 'http://localhost:8000';
     $rootScope.appUrl = 'http://127.0.0.1:5500/index.html';
 
+    
+    
+
     if (sessionStorage.getItem('access_token')) {
         token = JSON.parse(sessionStorage.getItem('access_token'));
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -24,19 +27,22 @@ app.run(($rootScope, $location) => {
     }
 
     $rootScope.getLoggedUserData = function(token) {
+       
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace('-', '+').replace('_', '/');
         user = JSON.parse($window.atob(base64));
 
         loggedUser = {
-            ID: user.ID,
-            name: user.username,
-            email: user.email
+            'ID': user.ID,
+            'name': user.username,
+            'email': user.email,
+            'privilege': user.privilege 
         }
 
-        return  loggedUser;
+        return loggedUser;
     }
 
+    
  
 });
 
@@ -101,6 +107,39 @@ app.config(($routeProvider) => {
         .when('/profile', {
             templateUrl: 'Views/profile.html',
             controller: 'profileCtrl',
+            resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/mainforum', {
+            templateUrl: 'Views/mainforum.html',
+            controller: 'mainforumCtrl',
+            resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/adminforum', {
+            templateUrl: 'Views/adminforum.html',
+            controller: 'adminforumCtrl',
+            resolve: {
+                function($location, $rootScope) {
+                    if (!$rootScope.loggedIn) {
+                        $location.path('/');
+                    }
+                }
+            }
+        })
+        .when('/offtopicforum', {
+            templateUrl: 'Views/offtopicforum.html',
+            controller: 'offtopicforumCtrl',
             resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {

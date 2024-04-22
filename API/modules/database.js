@@ -105,7 +105,8 @@ router.post('/logincheck', (req, res)=>{
            let user = {
                ID: results[0].ID,
                name: results[0].username,
-               email: results[0].email
+               email: results[0].email,
+               privilege: results[0].privilege
             }   
             results[0] ={ token: jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})};
         }
