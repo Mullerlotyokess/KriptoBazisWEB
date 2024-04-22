@@ -57,7 +57,10 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
                     'pass': CryptoJS.SHA1(pass).toString()
                 }
 
-                
+                $scope.user.email = "";
+                $scope.user.username = "";
+                $scope.user.pass = "";
+                $scope.user.passconfirm = "";
                 
                 axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
                     toastcontent.innerText = "Sikeres regisztráció!"
@@ -67,6 +70,9 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
                     
                 });
+
+               
+
             }
         });
 

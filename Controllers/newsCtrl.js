@@ -42,7 +42,7 @@ app.controller("newsCtrl", function($scope, $rootScope, $location) {
         document.getElementById('newsloader').style.visibility = "visible";
 
 
-        setInterval(() => {
+        setTimeout(() => {
             axios.get(`${$rootScope.serverUrl}/db/news`).then(res => {
                 console.log(res.data.data);
     

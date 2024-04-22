@@ -56,7 +56,6 @@ app.config(($routeProvider) => {
         })
         .when('/wiki', {
             templateUrl: 'Views/wiki.html',
-            controller: 'wikiCtrl',
             resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
