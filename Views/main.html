@@ -7,11 +7,12 @@
     <button class="btn btn-warning" ng-click="refreshNews()" id="refreshBtn">Hírek frissítése</button>
     <div class="newsWindow" id="newsWindow">
         <div ng-repeat="data in news">
-            <h1 id="titleh1">{{data.title}}</h1><h2 id="authorh2">szerző: {{data.author}}</h2>
+            <h1 id="titleh1">{{data.title}}</h1><h3 id="authorh2">szerző: {{data.author}}</h3>
             <p id="newsParagraph">
                 {{data.content}}
             </p>
-            <h3 id="newsDate">dátum: {{data.date}}</h3>
+            <h4 id="newsDate">dátum: {{data.date}}</h4>
+            <hr>
         </div>
     </div>
 </div>

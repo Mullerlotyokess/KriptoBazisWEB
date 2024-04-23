@@ -53,7 +53,7 @@ app.controller("newsCtrl", function($scope, $rootScope, $location) {
                 toastBootstrap.show();
                 $scope.$apply();
             });
-        }, 3000);
+        }, 2000);
        
     }
 

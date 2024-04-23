@@ -150,6 +150,51 @@ app.controller("currenciesCtrl", function($scope, $rootScope, $location) {
            
         })
 
+        await axios.get(`${$rootScope.serverUrl}/db/get_crypto_data/dot`).then(res =>{
+            const cryptoData = res.data.data.data.DOT
+            
+            $scope.cryptos.push({ 
+                imageName: 'polkadot',
+                name: 'polkadot',
+                price: cryptoData.quote.USD.price.toFixed(5), 
+                marketcap: cryptoData.quote.USD.market_cap.toFixed(2), 
+                volume: cryptoData.quote.USD.volume_24h.toFixed(2),
+                totalSupply: cryptoData.max_supply 
+            })
+
+           
+        })
+
+        await axios.get(`${$rootScope.serverUrl}/db/get_crypto_data/near`).then(res =>{
+            const cryptoData = res.data.data.data.NEAR
+            
+            $scope.cryptos.push({ 
+                imageName: 'near',
+                name: 'NEAR protocol',
+                price: cryptoData.quote.USD.price.toFixed(5), 
+                marketcap: cryptoData.quote.USD.market_cap.toFixed(2), 
+                volume: cryptoData.quote.USD.volume_24h.toFixed(2),
+                totalSupply: cryptoData.max_supply 
+            })
+
+           
+        })
+
+        await axios.get(`${$rootScope.serverUrl}/db/get_crypto_data/matic`).then(res =>{
+            const cryptoData = res.data.data.data.MATIC
+            
+            $scope.cryptos.push({ 
+                imageName: 'polygon',
+                name: 'Polygon',
+                price: cryptoData.quote.USD.price.toFixed(5), 
+                marketcap: cryptoData.quote.USD.market_cap.toFixed(2), 
+                volume: cryptoData.quote.USD.volume_24h.toFixed(2),
+                totalSupply: cryptoData.max_supply 
+            })
+
+           
+        })
+
         $scope.$apply();
     }
 
