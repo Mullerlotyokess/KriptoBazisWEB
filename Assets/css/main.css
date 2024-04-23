@@ -8,10 +8,6 @@ html {
 }
 
 
-main{
-    border-right: 30px rgb(2,0,36) solid;
-}
-
 /*Sidebar CSS*/
 
 :root {
@@ -39,6 +35,7 @@ body {
     font-size: var(--normal-font-size);
     transition: .5s;
     background-color: white;
+    background: url(/Assets/img/backgroundcover.png);
 }
 
 a {
@@ -214,10 +211,17 @@ footer{
     font-size: 150%;
 }
 
+#loginPage{
+
+    margin-top: 3vh;
+}
+
 #loginForm{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
+
+
 
 #loginBtn{
     font-size: 150%;
@@ -229,7 +233,7 @@ footer{
 
 .container{
     
-    margin-top: 25px;
+
     float: left;
 }
 

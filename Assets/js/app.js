@@ -117,7 +117,7 @@ app.config(($routeProvider) => {
         })
         .when('/mainforum', {
             templateUrl: 'Views/mainforum.html',
-            controller: 'mainforumCtrl',
+            controller: 'forumCtrl',
             resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
@@ -126,9 +126,9 @@ app.config(($routeProvider) => {
                 }
             }
         })
-        .when('/adminforum', {
-            templateUrl: 'Views/adminforum.html',
-            controller: 'adminforumCtrl',
+        .when('/createforum', {
+            templateUrl: 'Views/createforum.html',
+            controller: 'forumCtrl',
             resolve: {
                 function($location, $rootScope) {
                     if (!$rootScope.loggedIn) {
@@ -137,13 +137,12 @@ app.config(($routeProvider) => {
                 }
             }
         })
-        .when('/offtopicforum', {
-            templateUrl: 'Views/offtopicforum.html',
-            controller: 'offtopicforumCtrl',
-            resolve: {
-                function($location, $rootScope) {
+        .when('/rules', {
+            templateUrl: 'Views/rules.html',
+            resolve:{
+                function($location, $rootScope){
                     if (!$rootScope.loggedIn) {
-                        $location.path('/');
+                        $location.path('/')
                     }
                 }
             }
