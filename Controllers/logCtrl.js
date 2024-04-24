@@ -69,12 +69,15 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             return; 
         }
 
+        console.log(email);
+
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
             if (res.data.data.length <= 0) {
                 toastcontent.innerText = "Nincs ilyen E-mail cím regisztrálva!"
                 toastBootstrap.show()
                 
             }
+
             else{
                 let message = `<body><h1>Elfelejtett adatok: </h1></body>`;
 
@@ -85,8 +88,8 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
                 }
 
                 axios.post($rootScope.serverUrl + '/email/send', data).then(res=>{
-                    alert(res.data);
-
+                    console.log(res.data)   
+              
                 })
              
 
