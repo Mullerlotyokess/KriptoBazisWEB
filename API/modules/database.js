@@ -89,6 +89,16 @@ router.get("/users/email/:op/:value", (req,res) => {
     })
 });
 
+// megadott ID alapján adat lekérése
+router.get("/users/ID/:op/:value", (req,res) => {
+  let value = req.params.value;
+  let op = getOperator(req.params.op);
+  pool.query(`SELECT * FROM users WHERE ID ${op} '${value}'`, (err, results) =>{
+    if (err) return res.send({message: 'Hiba történt!'}) 
+    res.send({message: 'Sikeres adatkérés.', data: results})
+  })
+});
+
 //Bejelentkezés validálása
 router.post('/logincheck', (req, res)=>{
 

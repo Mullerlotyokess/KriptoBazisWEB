@@ -34,7 +34,7 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
                     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                     
 
-                    
+                    $rootScope.loggedUser = $rootScope.getLoggedUserData(token);
 
                     $rootScope.loggedIn = true;
                     $location.path('/profile');

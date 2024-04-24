@@ -1,6 +1,6 @@
 var app = angular.module('KriptoBazisAPP', ['ngRoute', 'ngNotify']);
 
-app.run(($rootScope, $location) => {
+app.run(($rootScope, $location, $window) => {
     $rootScope.loggedIn = false;
     $rootScope.pageTitle = "Kripto Bázis";
 
@@ -10,7 +10,7 @@ app.run(($rootScope, $location) => {
     $rootScope.serverUrl = 'http://localhost:8000';
     $rootScope.appUrl = 'http://127.0.0.1:5500/index.html';
 
-    
+    $rootScope.loggedUser = {};
     
 
     if (sessionStorage.getItem('access_token')) {
@@ -32,7 +32,7 @@ app.run(($rootScope, $location) => {
         var base64 = base64Url.replace('-', '+').replace('_', '/');
         user = JSON.parse($window.atob(base64));
 
-        loggedUser = {
+       loggedUser = {
             'ID': user.ID,
             'name': user.username,
             'email': user.email,
