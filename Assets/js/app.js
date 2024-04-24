@@ -139,13 +139,7 @@ app.config(($routeProvider) => {
         })
         .when('/rules', {
             templateUrl: 'Views/rules.html',
-            resolve:{
-                function($location, $rootScope){
-                    if (!$rootScope.loggedIn) {
-                        $location.path('/')
-                    }
-                }
-            }
+           
         })
         .otherwise({
             redirectTo: '/main'
