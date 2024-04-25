@@ -11,7 +11,7 @@ app.run(($rootScope, $location, $window) => {
     $rootScope.appUrl = 'http://127.0.0.1:5500/index.html';
 
     $rootScope.loggedUser = {};
-    
+    $rootScope.ifAdmin = false;
 
     if (sessionStorage.getItem('access_token')) {
         token = JSON.parse(sessionStorage.getItem('access_token'));
@@ -41,6 +41,8 @@ app.run(($rootScope, $location, $window) => {
 
         return loggedUser;
     }
+
+    
 
     
  

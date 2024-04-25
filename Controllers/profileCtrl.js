@@ -1,5 +1,3 @@
-const { rootCertificates } = require("tls");
-
 app.controller("profileCtrl", function($scope, $rootScope, $location) {
     $scope.profile = {}
 
@@ -9,6 +7,10 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
     let toastcontent = document.getElementById('toastcontent');
 
     const {serverUrl, loggedUser} = $rootScope;
+
+    if (loggedUser.privilege == "admin") {
+       $rootScope.ifAdmin = true
+    }
 
     axios.get(`${$rootScope.serverUrl}/db/users/ID/eq/${loggedUser.ID}`).then(res =>{
         console.log(res.data.data)
