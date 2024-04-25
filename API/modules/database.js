@@ -58,7 +58,7 @@ router.get('/get_crypto_data/:crypto', (req, res) => {
 
 // Felhasználó adatainak feltöltése
 router.post("/users", (req,res) => {
-  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}, 'user')`, (err, results) => {
+  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}', "user")`, (err, results) => {
       if (err) return res.send({ message: 'Hiba történt!' }) 
       res.send({ message: 'Sikeres adatfelvétel.', data: results})
     
@@ -144,7 +144,8 @@ router.get('/news', (req, res) =>{
 
 //profil adatok feltöltése
 router.post('/profiles', (req, res) =>{
-  pool.query(`INSERT INTO profiles VALUES (null, '${req.body.loggedUserID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`, (err, results) => {
+  console.log(`INSERT INTO profiles VALUES (null, '${req.body.userID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`)
+  pool.query(`INSERT INTO profiles VALUES (null, '${req.body.userID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`, (err, results) => {
       if (err) return res.send({message: 'Hiba történt!'}) 
       res.send({message: 'Sikeres adatfelvétel.', data: results})
   

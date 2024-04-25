@@ -60,7 +60,7 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
                 console.log(newUser)
 
-                axios.post(`${serverUrl}/db/users`, newUser).then(res =>{
+                axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
                     console.log(res.data.data)
                     toastcontent.innerText = "Sikeres regisztráció!"
                     toastBootstrap.show()

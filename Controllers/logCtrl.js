@@ -79,6 +79,9 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             }
 
             else{
+
+                
+
                 let message = `<body><h1>Elfelejtett adatok: </h1></body>`;
 
                 let data = {
