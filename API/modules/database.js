@@ -142,6 +142,15 @@ router.get('/news', (req, res) =>{
     })
 })
 
+router.post('/forumposts', (req, res) =>{
+  console.log(`INSERT INTO forumposts VALUES (null, '${req.body.title}', '${req.body.content}')`)
+  pool.query(`INSERT INTO forumposts VALUES (null, '${req.body.title}', '${req.body.content}')`, (err, results) => {
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatfelvétel.', data: results})
+  
+  });
+})
+
 //profil adatok feltöltése
 router.post('/profiles', (req, res) =>{
   console.log(`INSERT INTO profiles VALUES (null, '${req.body.userID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`)
