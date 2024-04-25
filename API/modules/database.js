@@ -58,22 +58,17 @@ router.get('/get_crypto_data/:crypto', (req, res) => {
 
 // Felhasználó adatainak feltöltése
 router.post("/users", (req,res) => {
-  console.log(req)
-
-  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}')`, (err, results) => {
-      if (err) return res.send({message: 'Hiba történt!'}) 
-      res.send({message: 'Sikeres adatfelvétel.', data: results})
+  pool.query(`INSERT INTO users VALUES (null, '${req.body.username}', '${req.body.email}', '${req.body.pass}, 'user')`, (err, results) => {
+      if (err) return res.send({ message: 'Hiba történt!' }) 
+      res.send({ message: 'Sikeres adatfelvétel.', data: results})
     
   });
 });
 
 // Felhasználó adatainak lekérése
 router.get("/users", (req, res) => {
-  console.log(req)
-
   pool.query(`SELECT * FROM users`, (err, results) => {
     if (err) return res.send({ message: 'Hiba történt!' })
-
     res.send({ message: 'Sikeres felhasználók lekérése.', data: results })
   });
 });
@@ -91,12 +86,12 @@ router.get("/users/email/:op/:value", (req,res) => {
 
 // megadott ID alapján adat lekérése
 router.get("/users/ID/:op/:value", (req,res) => {
-  let value = req.params.value;
-  let op = getOperator(req.params.op);
-  pool.query(`SELECT * FROM users WHERE ID ${op} '${value}'`, (err, results) =>{
-    if (err) return res.send({message: 'Hiba történt!'}) 
-    res.send({message: 'Sikeres adatkérés.', data: results})
-  })
+    let value = req.params.value;
+    let op = getOperator(req.params.op);
+    pool.query(`SELECT * FROM users WHERE ID ${op} '${value}'`, (err, results) =>{
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatkérés.', data: results})
+    })
 });
 
 //Bejelentkezés validálása
@@ -147,6 +142,14 @@ router.get('/news', (req, res) =>{
     })
 })
 
+//profil adatok feltöltése
+router.post('/profiles', (req, res) =>{
+  pool.query(`INSERT INTO profiles VALUES (null, '${req.body.loggedUserID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`, (err, results) => {
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatfelvétel.', data: results})
+  
+  });
+})
 
 pool.getConnection((err, connection) =>{
   if (err) {

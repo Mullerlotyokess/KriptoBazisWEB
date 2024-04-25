@@ -23,6 +23,7 @@ app.run(($rootScope, $location, $window) => {
         sessionStorage.removeItem('access_token');
         axios.defaults.headers.common['Authorization'] = ``;
         $rootScope.loggedIn = false;
+        $rootScope.loggedUser = {};
         $location.path('/login');
     }
 

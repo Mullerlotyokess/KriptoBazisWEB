@@ -45,34 +45,28 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
-            console.log(res.data)
+            console.log(res.data.data)
             if(res.data.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
             }
             else{
-                newUser = {
+
+                let newUser = {
                     'username': username,
                     'email': email,
                     'pass': CryptoJS.SHA1(pass).toString()
                 }
 
-                $scope.user.email = "";
-                $scope.user.username = "";
-                $scope.user.pass = "";
-                $scope.user.passconfirm = "";
-                
-                axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
+                console.log(newUser)
+
+                axios.post(`${serverUrl}/db/users`, newUser).then(res =>{
+                    console.log(res.data.data)
                     toastcontent.innerText = "Sikeres regisztráció!"
                     toastBootstrap.show()
                     
                     $scope.user = {};
-
-                    
-                });
-
-               
-
+                })
             }
         });
 

@@ -16,24 +16,28 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
         console.log(res.data.data)
 
         $scope.profilmodositas = function()
-    {
-        const {nickname, status, location, social, pfp} = $scope.profile
+        {
+                let {nickname, statusmsg, location, social} = $scope.profile;
 
-        let data = {
-            'userID': loggedUser.ID,
-            'nickname': nickname,
-            'status': status,
-            'location': location,
-            'social': social,
-            'pfp': pfp
+                newProfile = {
+                    'userID': loggedUser.ID,
+                    'nickname': nickname,
+                    'statusmsg': statusmsg,
+                    'location': location,
+                    'social': social
+                }
+
+                console.log(newProfile);
+
+                axios.post(`${$rootScope.serverUrl}/db/profiles`, newProfile).then(res =>
+                {
+                    console.log(res.data.data)
+                    toastcontent.innerText = "Adatok mentve!"
+                    toastBootstrap.show();
+    
+                    $scope.profile = {};
+                    
+                })
         }
-
-        axios.post(`${$rootScope.serverUrl}/db/profiles`, data).then(res =>{
-            console.log(res.data.data);
-            
-            toastcontent.innerText = "Adatok mentve!";
-            toastBootstrap.show();
-        })
-    }
     })
 });
