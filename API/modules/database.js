@@ -78,11 +78,12 @@ router.get("/users", (req, res) => {
 router.get("/users/email/:op/:value", (req,res) => {
     let value = req.params.value;
     let op = getOperator(req.params.op);
-    pool.query(`SELECT email FROM users WHERE email ${op} '${value}'`, (err, results) =>{
+    pool.query(`SELECT * FROM users WHERE email ${op} '${value}'`, (err, results) =>{
       if (err) return res.send({message: 'Hiba történt!'}) 
       res.send({message: 'Sikeres adatkérés.', data: results})
     })
 });
+
 
 // megadott ID alapján adat lekérése
 router.get("/users/ID/:op/:value", (req,res) => {
@@ -153,8 +154,8 @@ router.get('/news', (req, res) =>{
 })
 
 router.post('/forumposts', (req, res) =>{
-  console.log(`INSERT INTO forumposts VALUES (null, '${req.body.title}', '${req.body.content}')`)
-  pool.query(`INSERT INTO forumposts VALUES (null, '${req.body.title}', '${req.body.content}')`, (err, results) => {
+  console.log(`INSERT INTO forumposts VALUES (null, '${req.body.date}', '${req.body.content}', '${req.body.title}', '${req.body.author}')`)
+  pool.query(`INSERT INTO forumposts VALUES (null, '${req.body.date}', '${req.body.content}', '${req.body.title}', '${req.body.author}')`, (err, results) => {
       if (err) return res.send({message: 'Hiba történt!'}) 
       res.send({message: 'Sikeres adatfelvétel.', data: results})
   

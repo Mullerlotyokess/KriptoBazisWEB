@@ -80,7 +80,7 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
 
             else{
                 axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
-                    let message = `<body><h1>Elfelejtett adatok: </h1></body>` + res.data.data.toString();
+                    let message = `<body><h1>Elfelejtett adatok</h1> <br> Jelszó visszaszerzéséhez keresse fel a vezetőséget E-mailen keresztül! <br> Felhasználónév:  ${res.data.data[0].username} <br> E-mail:  ${res.data.data[0].email}  <br> Jelszó: (titkosított):  ${res.data.data[0].pass} </body>`;
 
                     let data = {
                         to: email,
