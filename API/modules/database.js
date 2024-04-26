@@ -153,13 +153,20 @@ router.post('/forumposts', (req, res) =>{
 
 //profil adatok feltöltése
 router.post('/profiles', (req, res) =>{
-  console.log(`INSERT INTO profiles VALUES (null, '${req.body.userID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`)
-  pool.query(`INSERT INTO profiles VALUES (null, '${req.body.userID}', '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`, (err, results) => {
-      if (err) return res.send({message: 'Hiba történt!'}) 
+  pool.query(`INSERT INTO profiles VALUES (null, ${req.body.userID}, '${req.body.nickname}', '${req.body.statusmsg}', '${req.body.location}', '${req.body.social}')`, (err, results) => {
+      if (err) return res.send({message: 'Hiba történt!', err:err}) 
       res.send({message: 'Sikeres adatfelvétel.', data: results})
   
   });
-})
+});
+
+//profil adatok lekérése
+router.get('/profiles', (req, res) =>{
+  pool.query(`SELECT * FROM profiles`, (err, results) =>{
+      if (err) return res.send({message: 'Hiba történt!'}) 
+      res.send({message: 'Sikeres adatfelvétel.', data: results})
+  });
+});
 
 pool.getConnection((err, connection) =>{
   if (err) {

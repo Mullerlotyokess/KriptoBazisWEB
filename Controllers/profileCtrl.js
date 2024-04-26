@@ -12,8 +12,6 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
        $rootScope.ifAdmin = true
     }
 
-    axios.get(`${$rootScope.serverUrl}/db/users/ID/eq/${loggedUser.ID}`).then(res =>{
-        console.log(res.data.data)
 
         $scope.profilmodositas = function()
         {
@@ -39,5 +37,5 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
                     
                 })
         }
-    })
+    
 });

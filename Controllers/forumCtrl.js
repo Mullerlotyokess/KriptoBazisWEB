@@ -1,8 +1,6 @@
 app.controller("forumCtrl", function($scope, $rootScope, $location) {
     $scope.post = {};
     $scope.posts = [];
-    $scope.reply = {};
-    $scope.replies = [];
 
     const toastLiveExample = document.getElementById('liveToast')
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
@@ -12,6 +10,8 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
     $scope.uploadPost = function()
     {
         let {title, content} = $scope.post
+
+        
 
         if (title == null || content == null){
             toastcontent.innerText = "Tölts ki minden mezőt!";
