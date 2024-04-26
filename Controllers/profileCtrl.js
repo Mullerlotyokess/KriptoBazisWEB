@@ -15,26 +15,40 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
 
         $scope.profilmodositas = function()
         {
-                let {nickname, statusmsg, location, social} = $scope.profile;
+                let {nickname, statusmsg, location, social, pfp} = $scope.profile;
 
                 newProfile = {
                     'userID': loggedUser.ID,
                     'nickname': nickname,
                     'statusmsg': statusmsg,
                     'location': location,
-                    'social': social
+                    'social': social,
+                    'pfp': pfp
                 }
 
                 console.log(newProfile);
 
-                axios.post(`${$rootScope.serverUrl}/db/profiles`, newProfile).then(res =>
-                {
+                axios.get(`${$rootScope.serverUrl}/db/profiles/userID/eq/${loggedUser.ID}`).then(res =>{
                     console.log(res.data.data)
-                    toastcontent.innerText = "Adatok mentve!"
-                    toastBootstrap.show();
-    
-                    $scope.profile = {};
-                    
+                    if (res.data.data.length > 0) {
+                        axios.patch(`${$rootScope.serverUrl}/db/profiles/userID/eq/${loggedUser.ID}`, newProfile).then(res =>{
+                            console.log(res.data.data)
+                            toastcontent.innerText = "Adatok mentve!"
+                            toastBootstrap.show();
+                            $scope.profile = {};
+                        })
+                    }
+                    else{
+                            axios.post(`${$rootScope.serverUrl}/db/profiles`, newProfile).then(res =>
+                            {
+                                console.log(res.data.data)
+                                toastcontent.innerText = "Adatok mentve!"
+                                toastBootstrap.show();
+                
+                                $scope.profile = {};
+                                
+                            })
+                    }
                 })
         }
     

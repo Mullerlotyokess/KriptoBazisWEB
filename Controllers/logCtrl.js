@@ -79,25 +79,24 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             }
 
             else{
+                axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
+                    let message = `<body><h1>Elfelejtett adatok: </h1></body>` + res.data.data.toString();
 
+                    let data = {
+                        to: email,
+                        subject: 'Elfelejtett adatok - Kripto Bázis',
+                        message: message
+                    }
+
+                    axios.post($rootScope.serverUrl + '/email/send', data).then(res=>{
+                        console.log(res.data)   
+                
+                    })
                 
 
-                let message = `<body><h1>Elfelejtett adatok: </h1></body>`;
-
-                let data = {
-                    to: email,
-                    subject: 'Elfelejtett adatok - Kripto Bázis',
-                    message: message
-                }
-
-                axios.post($rootScope.serverUrl + '/email/send', data).then(res=>{
-                    console.log(res.data)   
-              
+                    toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
+                    toastBootstrap.show()
                 })
-             
-
-                toastcontent.innerText = "Jelszó emlékeztető Email elküldve!"
-                toastBootstrap.show()
             }
 
 
