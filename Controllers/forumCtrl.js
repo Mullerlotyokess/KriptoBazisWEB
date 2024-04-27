@@ -10,7 +10,7 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
     
     $scope.uploadPost = function()
     {
-        let {title, content} = $scope.post
+        let {title, content, author} = $scope.post
 
         
 
@@ -36,10 +36,11 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
             }
 
             data = {
+                'userID': loggedUser.ID,
                 'date': formatDate(new Date().toDateString()),
                 'content': content,
                 'title': title,
-                'author': loggedUser.username
+                'author': author
             }
 
             axios.post(`${$rootScope.serverUrl}/db/forumposts`, data).then(res =>{
@@ -47,8 +48,18 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
                 toastcontent.innerText = "Sikeres Feltöltés!"
                 toastBootstrap.show();
 
-                $scope.new = {};
+                $scope.post = {};
             })
         }
+    }
+
+    $scope.deletePost = function()
+    {
+        $scope.post.title = ""
+        $scope.post.author = ""
+        $scope.post.content = ""
+
+        toastcontent.innerText = "Mezők ürítve!"
+        toastBootstrap.show()
     }
 });

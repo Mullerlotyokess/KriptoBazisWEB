@@ -137,6 +137,7 @@ router.post('/logincheck', (req, res)=>{
 
 //hírek feltöltése adatbázisba
 router.post('/news', (req, res) =>{
+    
     pool.query(`INSERT INTO news VALUES (null, '${req.body.title}', '${req.body.author}', '${req.body.content}', '${req.body.date}')`, (err, results) => {
         if (err) return res.send({message: 'Hiba történt!'}) 
         res.send({message: 'Sikeres adatfelvétel.', data: results})
@@ -153,9 +154,19 @@ router.get('/news', (req, res) =>{
     })
 })
 
+//poszt feltöltése
 router.post('/forumposts', (req, res) =>{
-  console.log(`INSERT INTO forumposts VALUES (null, '${req.body.date}', '${req.body.content}', '${req.body.title}', '${req.body.author}')`)
-  pool.query(`INSERT INTO forumposts VALUES (null, '${req.body.date}', '${req.body.content}', '${req.body.title}', '${req.body.author}')`, (err, results) => {
+  console.log(`INSERT INTO forumposts VALUES (null, '${req.body.userID}', '${req.body.date}', '${req.body.content}', '${req.body.title}', '${req.body.author}')`)
+  pool.query(`INSERT INTO forumposts VALUES (null, '${req.body.userID}', '${req.body.date}', '${req.body.content}', '${req.body.title}', '${req.body.author}')`, (err, results) => {
+      if (err) return res.send({message: 'Hiba történt!', err:err}) 
+      res.send({message: 'Sikeres adatfelvétel.', data: results})
+  
+  });
+})
+
+//posztok lekérése
+router.get('/forumposts', (req, res) =>{
+  pool.query(`SELECT * FROM forumposts`, (err, results) => {
       if (err) return res.send({message: 'Hiba történt!'}) 
       res.send({message: 'Sikeres adatfelvétel.', data: results})
   
