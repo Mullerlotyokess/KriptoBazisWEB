@@ -18,7 +18,7 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
 
         console.log($scope.postID)
 
-        if (title == null || content == null){
+        if (title == null || content == null || author == null){
             toastcontent.innerText = "Tölts ki minden mezőt!";
             toastBootstrap.show();
 

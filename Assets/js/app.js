@@ -24,7 +24,7 @@ app.run(($rootScope, $location, $window) => {
         axios.defaults.headers.common['Authorization'] = ``;
         $rootScope.loggedIn = false;
         $rootScope.loggedUser = {};
-        $location.path('/login');
+        $location.path('/main');
     }
 
     $rootScope.getLoggedUserData = function(token) {
