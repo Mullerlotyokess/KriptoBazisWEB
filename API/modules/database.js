@@ -85,7 +85,7 @@ router.get("/users/email/:op/:value", (req,res) => {
 });
 
 
-// megadott ID alapján adat lekérése
+// megadott ID alapján users adat lekérése
 router.get("/users/ID/:op/:value", (req,res) => {
     let value = req.params.value;
     let op = getOperator(req.params.op);
@@ -95,15 +95,7 @@ router.get("/users/ID/:op/:value", (req,res) => {
     })
 });
 
-// megadott profile userID alapján adat lekérése
-router.get("/profiles/userID/:op/:value", (req,res) => {
-  let value = req.params.value;
-  let op = getOperator(req.params.op);
-  pool.query(`SELECT * FROM profiles WHERE userID ${op} '${value}'`, (err, results) =>{
-    if (err) return res.send({message: 'Hiba történt!'}) 
-    res.send({message: 'Sikeres adatkérés.', data: results})
-  })
-});
+
 
 //Bejelentkezés validálása
 router.post('/logincheck', (req, res)=>{
@@ -189,6 +181,17 @@ router.get('/profiles', (req, res) =>{
       res.send({message: 'Sikeres adatfelvétel.', data: results})
   });
 });
+
+// megadott profile userID alapján adat lekérése
+router.get("/profiles/userID/:op/:value", (req,res) => {
+  let value = req.params.value;
+  let op = getOperator(req.params.op);
+  pool.query(`SELECT * FROM profiles WHERE userID ${op} '${value}'`, (err, results) =>{
+    if (err) return res.send({message: 'Hiba történt!'}) 
+    res.send({message: 'Sikeres adatkérés.', data: results})
+  })
+});
+
 
 //profil adat frissítése ID alapján
 router.patch('/profiles/userID/:op/:value', (req, res) =>{

@@ -8,22 +8,22 @@
             <i class="bi bi-facebook"></i>
             <i class="bi bi-instagram"></i>
             <i class="bi bi-linkedin"></i>
-            <input type="text" name="" id="" class="linktexts" ng-model="profile.social">
+            <input type="text" name="" id="" class="linktexts" ng-model="profile.social" maxlength="50">
 
         </div>
             <div class="row profiletexts">
                 <form action="" id="profileForm">
                     <h1>Profil Szerkesztése</h1>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control w-75" id="nickname" ng-model="profile.nickname">
+                        <input type="text" class="form-control w-75" id="nickname" ng-model="profile.nickname" maxlength="24">
                         <label for="text">Becenév (Megjelenítendő név)</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control w-75" id="status" ng-model="profile.statusmsg">
+                        <input type="text" class="form-control w-75" id="status" ng-model="profile.statusmsg" maxlength="24">
                         <label for="pass">Egyéni állapotüzenet:</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control w-75" id="location" ng-model="profile.location">
+                        <input type="text" class="form-control w-75" id="location" ng-model="profile.location" maxlength="32">
                         <label for="pass">Lakhely (Ország):</label>
                     </div>
                     <input type="button" class="btn btn-primary" value="Mentés" id="profileBtn" ng-click="profilmodositas()">

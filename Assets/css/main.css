@@ -199,14 +199,6 @@ a {
 
 /*Sidebar CSS vége*/
 
-footer{
-    background-color: black;
-    letter-spacing: 3px;
-    font-size: 80%;
-    text-align: center;
-    padding: 10px;
-}
-
 .bitcoinicon{
     font-size: 150%;
 }
@@ -220,8 +212,6 @@ footer{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
-
-
 
 #loginBtn{
     font-size: 150%;
@@ -241,7 +231,6 @@ footer{
 .form-control{
     box-shadow: 0 0 5px rgb(2,0,36);
 }
-
 
 .welcomePage
 {
@@ -446,6 +435,39 @@ table{
 }
 
 .createForum{
-    font-family: defaultfont;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 140%;
     padding-top: 2%;
+}
+
+.postPanel{
+    background-color: rgb(195,195,232);
+    border: 10px solid rgb(2,0,36);
+    border-radius: 2.5%;
+    padding-left: 2%;
+    font-family: defaultfont;
+    margin-bottom: 15px;
+}
+
+.postTitle{
+    float: right;
+    padding-right: 42%;
+}
+.postContent{
+    font-size: 125%;
+    
+}
+
+#postBtn
+{
+    font-family: defaultfont;
+    font-size: 150%;
+    margin-bottom: 15px;
+    margin-top: 2%;
+}
+
+#postsloader{
+    visibility: hidden;
+    font-family: defaultfont;
+    font-size: 150%;
 }

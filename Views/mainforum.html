@@ -1,3 +1,29 @@
-<div class="">
-    Fő fórum nézet
+<div class="loaderpos" ng-if="posts.length == 0" id="postsloader">
+    <div id="loader"></div>
+     <span id="loaderText">Posztok betöltése...</span>
+</div>
+<button ng-click="LoadPosts()" class="btn btn-primary" id="postBtn">Posztok betöltése</button>
+<div class="ForumList">
+        <div class="postPanel" ng-repeat="post in posts">
+            <h1 class="postTitle">{{post.title}}</h1>
+            <img src="/Assets/img/admin.png" alt="" width="250px" style="border-radius: 50%;">
+            <h1>{{post.author}}</h1>
+            <div class="postContent">
+                {{post.content}} <br> {{post.date}}
+            </div>
+        </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-currency-bitcoin bitcoinicon"></i>
+        <strong class="me-auto">Kripto Bázis</strong>
+        <small>Épp most</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastcontent">
+          
+      </div>
+</div>
 </div>

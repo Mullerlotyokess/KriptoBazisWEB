@@ -2,6 +2,9 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
     $scope.post = {};
     $scope.posts = [];
 
+    $scope.profile = {};
+    $scope.profiles = [];
+
     const toastLiveExample = document.getElementById('liveToast')
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
     let toastcontent = document.getElementById('toastcontent');
@@ -11,8 +14,9 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
     $scope.uploadPost = function()
     {
         let {title, content, author} = $scope.post
+    
 
-        
+        console.log($scope.postID)
 
         if (title == null || content == null){
             toastcontent.innerText = "Tölts ki minden mezőt!";
@@ -62,4 +66,24 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
         toastcontent.innerText = "Mezők ürítve!"
         toastBootstrap.show()
     }
+
+    $scope.LoadPosts = function()
+    {
+        document.getElementById('postsloader').style.visibility = "visible";
+
+        setTimeout(() => {
+            axios.get(`${$rootScope.serverUrl}/db/forumposts`).then(res =>{
+                console.log(res.data.data)
+    
+                $scope.posts = res.data.data;
+    
+                console.log($scope.posts)
+                toastcontent.innerText = "Posztok betöltve!"
+                toastBootstrap.show()
+                $scope.$apply();
+            })
+        }, 2000);
+    }
+
+    
 });

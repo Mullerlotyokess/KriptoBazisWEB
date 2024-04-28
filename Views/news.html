@@ -10,12 +10,12 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Hír címe</label>
-                        <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="new.title">
+                        <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="new.title" maxlength="24">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Szerző</label>
-                        <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="new.author">
+                        <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="new.author" maxlength="24">
                     </div>
 
                     <div class="form-group">
@@ -24,8 +24,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Hír leírása</label>
-                        <textarea class="form-control w-75" id="exampleFormControlTextarea1" ng-model="new.content"></textarea>
+                        <label for="exampleFormControlTextarea1">Hír leírása (500 karakter max)</label>
+                        <textarea class="form-control w-75" id="exampleFormControlTextarea1" ng-model="new.content" maxlength="500"></textarea>
                     </div>
                     <button type="button" class="btn btn-success" id="newBtn" ng-click="insert()">Beillesztés</button>
                     <button type="button" class="btn btn-danger" id="newDltBtn" ng-click="delete()">Törlés</button>

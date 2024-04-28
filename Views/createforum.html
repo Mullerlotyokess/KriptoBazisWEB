@@ -6,16 +6,16 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Poszt címe</label>
-                            <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="post.title">
+                            <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="post.title" maxlength="24">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Poszt írója</label>
-                            <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="post.author">
+                            <input type="text" class="form-control w-50" id="exampleFormControlInput1" ng-model="post.author" maxlength="24">
                         </div>
                         
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Poszt leírása</label>
-                            <textarea class="form-control w-75" id="exampleFormControlTextarea1" ng-model="post.content"></textarea>
+                            <label for="exampleFormControlTextarea1">Poszt leírása (800 karakter max)</label>
+                            <textarea class="form-control w-75" id="exampleFormControlTextarea1" ng-model="post.content" maxlength="800"></textarea>
                         </div>
                         <button type="button" class="btn btn-success" id="newBtn" ng-click="uploadPost()">Létrehozás</button>
                         <button type="button" class="btn btn-danger" id="newDltBtn" ng-click="deletePost()">Törlés</button>
