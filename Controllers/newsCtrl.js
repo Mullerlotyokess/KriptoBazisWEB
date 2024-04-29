@@ -26,7 +26,6 @@ app.controller("newsCtrl", function($scope, $rootScope, $location) {
             }
 
             axios.post(`${$rootScope.serverUrl}/db/news`, data).then(res =>{
-                console.log(res.data.data)
                 toastcontent.innerText = "Sikeres hírfeltöltés!"
                 toastBootstrap.show();
 
@@ -44,14 +43,13 @@ app.controller("newsCtrl", function($scope, $rootScope, $location) {
 
         setTimeout(() => {
             axios.get(`${$rootScope.serverUrl}/db/news`).then(res => {
-                console.log(res.data.data);
-    
+
                 $scope.news = res.data.data;
-    
-                console.log($scope.news)
+                
                 toastcontent.innerText = "Hírek frissítve!";
                 toastBootstrap.show();
                 $scope.$apply();
+
             });
         }, 2000);
        

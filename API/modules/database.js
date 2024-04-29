@@ -197,9 +197,8 @@ router.get("/profiles/userID/:op/:value", (req,res) => {
 router.patch('/profiles/userID/:op/:value', (req, res) =>{
   let value = req.params.value;
   let op = getOperator(req.params.op);
-  console.log(`UPDATE profiles SET nickname ='${req.body.nickname}', statusmsg ='${req.body.statusmsg}', location ='${req.body.location}', social ='${req.body.social}', pfp ='${req.body.pfp}' WHERE userID ${op} '${value}'`)
-  console.log(req.body.pfp)
-  pool.query(`UPDATE profiles SET nickname ='${req.body.nickname}', statusmsg ='${req.body.statusmsg}', location ='${req.body.location}', social ='${req.body.social}', pfp ='${req.body.pfp}' WHERE userID ${op} '${value}'`, (err, results) =>{
+  console.log(`UPDATE profiles SET nickname ='${req.body.nickname}', statusmsg ='${req.body.statusmsg}', location ='${req.body.location}', social ='${req.body.social}' WHERE userID ${op} '${value}'`)
+  pool.query(`UPDATE profiles SET nickname ='${req.body.nickname}', statusmsg ='${req.body.statusmsg}', location ='${req.body.location}', social ='${req.body.social}' WHERE userID ${op} '${value}'`, (err, results) =>{
     if (err) return res.send({message: 'Hiba történt!', err:err}) 
       res.send({message: 'Sikeres adatfelvétel.', data:results})
   })

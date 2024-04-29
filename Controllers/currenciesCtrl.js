@@ -200,6 +200,4 @@ app.controller("currenciesCtrl", function($scope, $rootScope, $location) {
 
 
     $scope.priceUpdate()
-
-    console.log($scope.cryptos)
 });

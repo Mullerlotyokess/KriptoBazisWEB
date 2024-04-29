@@ -16,7 +16,7 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
         let {title, content, author} = $scope.post
     
 
-        console.log($scope.postID)
+   
 
         if (title == null || content == null || author == null){
             toastcontent.innerText = "Tölts ki minden mezőt!";
@@ -48,7 +48,7 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
             }
 
             axios.post(`${$rootScope.serverUrl}/db/forumposts`, data).then(res =>{
-                console.log(res.data.data)
+               
                 toastcontent.innerText = "Sikeres Feltöltés!"
                 toastBootstrap.show();
 
@@ -72,12 +72,9 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
         document.getElementById('postsloader').style.visibility = "visible";
 
         setTimeout(() => {
-            axios.get(`${$rootScope.serverUrl}/db/forumposts`).then(res =>{
-                console.log(res.data.data)
-    
+            axios.get(`${$rootScope.serverUrl}/db/forumposts`).then(res =>{    
                 $scope.posts = res.data.data;
     
-                console.log($scope.posts)
                 toastcontent.innerText = "Posztok betöltve!"
                 toastBootstrap.show()
                 $scope.$apply();

@@ -1,4 +1,4 @@
-app.controller("profileCtrl", function($scope, $rootScope, $location) {
+app.controller("profileCtrl", function($scope, $rootScope, $location, fileUpload) {
     $scope.profile = {}
 
     const toastLiveExample = document.getElementById('liveToast')
@@ -12,27 +12,30 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
        $rootScope.ifAdmin = true
     }
 
-
         $scope.profilmodositas = function()
         {
-                let {nickname, statusmsg, location, social, pfp} = $scope.profile;
+                let {nickname, statusmsg, location, social} = $scope.profile;
+
+                if (nickname == null || statusmsg == null || location == null || social == null) {
+                    toastcontent.innerText = "Hiányzó adatok!"
+                    toastBootstrap.show()
+                    return;
+                }
 
                 newProfile = {
                     'userID': loggedUser.ID,
                     'nickname': nickname,
                     'statusmsg': statusmsg,
                     'location': location,
-                    'social': social,
-                    'pfp': pfp
+                    'social': social
                 }
 
-                console.log(newProfile);
-
                 axios.get(`${$rootScope.serverUrl}/db/profiles/userID/eq/${loggedUser.ID}`).then(res =>{
-                    console.log(res.data.data)
+                    
+                    
                     if (res.data.data.length > 0) {
                         axios.patch(`${$rootScope.serverUrl}/db/profiles/userID/eq/${loggedUser.ID}`, newProfile).then(res =>{
-                            console.log(res.data.data)
+
                             toastcontent.innerText = "Adatok mentve!"
                             toastBootstrap.show();
                             $scope.profile = {};
@@ -41,7 +44,6 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
                     else{
                             axios.post(`${$rootScope.serverUrl}/db/profiles`, newProfile).then(res =>
                             {
-                                console.log(res.data.data)
                                 toastcontent.innerText = "Adatok mentve!"
                                 toastBootstrap.show();
                 
@@ -51,5 +53,7 @@ app.controller("profileCtrl", function($scope, $rootScope, $location) {
                     }
                 })
         }
+
+        
     
 });

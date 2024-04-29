@@ -11,10 +11,6 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
     $scope.regisztracio = function(){
 
-        console.log($rootScope.serverUrl)
-        console.log($scope.user.email)
-        console.log($scope.user.pass)
-
         let {username, email, pass, passconfirm} = $scope.user;
 
         if (username == null || email == null || pass == null || passconfirm == null){
@@ -45,7 +41,6 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
 
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
-            console.log(res.data.data)
             if(res.data.data.length > 0){
                 toastcontent.innerText = "Ez az Email-cím már regisztrálva van!"
                 toastBootstrap.show()
@@ -58,10 +53,8 @@ app.controller("regCtrl", function($scope, $rootScope, $location) {
                     'pass': CryptoJS.SHA1(pass).toString()
                 }
 
-                console.log(newUser)
 
                 axios.post(`${$rootScope.serverUrl}/db/users`, newUser).then(res =>{
-                    console.log(res.data.data)
                     toastcontent.innerText = "Sikeres regisztráció!"
                     toastBootstrap.show()
                     

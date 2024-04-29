@@ -69,7 +69,7 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
             return; 
         }
 
-        console.log(email);
+       
 
         axios.get(`${$rootScope.serverUrl}/db/users/email/eq/${email}`).then(res =>{
             if (res.data.data.length <= 0) {

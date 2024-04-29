@@ -1,4 +1,4 @@
-var app = angular.module('KriptoBazisAPP', ['ngRoute', 'ngNotify']);
+var app = angular.module('KriptoBazisAPP', ['ngRoute']);
 
 app.run(($rootScope, $location, $window) => {
     $rootScope.loggedIn = false;
@@ -13,20 +13,7 @@ app.run(($rootScope, $location, $window) => {
     $rootScope.loggedUser = {};
     $rootScope.ifAdmin = false;
 
-    if (sessionStorage.getItem('access_token')) {
-        token = JSON.parse(sessionStorage.getItem('access_token'));
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        $rootScope.loggedIn = true;
-    }
-
-    $rootScope.kijelentkezes = function(){
-        sessionStorage.removeItem('access_token');
-        axios.defaults.headers.common['Authorization'] = ``;
-        $rootScope.loggedIn = false;
-        $rootScope.loggedUser = {};
-        $location.path('/main');
-    }
-
+    //bejelentkezett felhasználó adatainak lekérése
     $rootScope.getLoggedUserData = function(token) {
        
         var base64Url = token.split('.')[1];
@@ -43,12 +30,31 @@ app.run(($rootScope, $location, $window) => {
         return loggedUser;
     }
 
+    //access token validálása
+    if (sessionStorage.getItem('access_token')) {
+        token = JSON.parse(sessionStorage.getItem('access_token'));
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        $rootScope.loggedIn = true;
+        $rootScope.loggedUser = $rootScope.getLoggedUserData(token);
+    }
+
+    //kijelentkeztetés
+    $rootScope.kijelentkezes = function(){
+        sessionStorage.removeItem('access_token');
+        axios.defaults.headers.common['Authorization'] = ``;
+        $rootScope.loggedIn = false;
+        $rootScope.loggedUser = {};
+        $location.path('/main');
+    }
+
+    
     
 
     
- 
+   
 });
 
+//útvonalak
 app.config(($routeProvider) => {
     $routeProvider
         .when('/main', {
