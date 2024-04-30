@@ -1,4 +1,4 @@
-app.controller("profileCtrl", function($scope, $rootScope, $location, fileUpload) {
+app.controller("profileCtrl", function($scope, $rootScope, $location) {
     $scope.profile = {}
 
     const toastLiveExample = document.getElementById('liveToast')
@@ -8,9 +8,6 @@ app.controller("profileCtrl", function($scope, $rootScope, $location, fileUpload
 
     const {serverUrl, loggedUser} = $rootScope;
 
-    if (loggedUser.privilege == "admin") {
-       $rootScope.ifAdmin = true
-    }
 
         $scope.profilmodositas = function()
         {
@@ -54,6 +51,12 @@ app.controller("profileCtrl", function($scope, $rootScope, $location, fileUpload
                 })
         }
 
-        
     
+        if (loggedUser.privilege == "admin") {
+            $rootScope.ifAdmin = true
+        }
+        else{
+            $rootScope.ifAdmin = false
+        }
+        
 });

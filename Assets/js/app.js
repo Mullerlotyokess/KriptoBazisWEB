@@ -46,12 +46,6 @@ app.run(($rootScope, $location, $window) => {
         $rootScope.loggedUser = {};
         $location.path('/main');
     }
-
-    
-    
-
-    
-   
 });
 
 //útvonalak
@@ -84,7 +78,7 @@ app.config(($routeProvider) => {
             controller: 'newsCtrl',
             resolve: {
                 function($location, $rootScope) {
-                    if (!$rootScope.loggedIn) {
+                    if (!$rootScope.loggedIn || $rootScope.ifAdmin == false) {
                         $location.path('/');
                     }
                 }
@@ -156,39 +150,4 @@ app.config(($routeProvider) => {
 }
 );
 
-app.directive('fileModel', function($parse) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
 
-            element.bind('change', function() {
-                scope.$apply(function() {
-                    modelSetter(scope, element[0].files[0]);
-                });
-            });
-        }
-    };
-});
-
-app.service('fileUpload', function($q) {
-
-    this.uploadFileToUrl = function(file, uploadUrl, uploadName) {
-        var fd = new FormData();
-        fd.append(uploadName, file);
-     
-        var deffered = $q.defer();
-     
-        axios.post(uploadUrl+'?uploadName='+uploadName, fd).then(
-            function(res) {
-                deffered.resolve(res);
-            },
-            function(err) {
-                deffered.reject(err);
-            }
-        );
-     
-        return deffered.promise;
-    }
-});

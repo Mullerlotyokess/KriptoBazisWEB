@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{pageTitle}}</title>
+    <!--Stílusok-->
     <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="Assets/img/crpytowebICON.svg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="Assets/bootstrap-icons-1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="Assets/css/main.css">
+    <!--Stílusok-->
 </head>
 <body id="body-pd">
     <header class="header" id="header">
@@ -39,6 +41,8 @@
             <a ng-show="loggedIn" href="#" class="nav_link" ng-click="kijelentkezes()"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Kijelentkezés</span> </a>
         </nav>
     </div>
+
+    <!--Main rész - Ide kerülnek a nézetek-->
     <main ng-view>
 
     </main>

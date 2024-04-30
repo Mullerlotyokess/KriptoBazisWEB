@@ -24,7 +24,6 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
                 'email': email,
                 'pass': CryptoJS.SHA1(pass).toString()
             }
-
             axios.post($rootScope.serverUrl + '/db/logincheck', data).then(res=>{
                 console.log(res.data.data)
                 if (res.data.data[0].token != ''){
@@ -45,9 +44,7 @@ app.controller("logCtrl", function($scope, $rootScope, $location) {
                     toastcontent.innerText = "Nem jó adatokat adott meg!"
                     toastBootstrap.show()
                 }
-
             });
-           
         }
     }
 

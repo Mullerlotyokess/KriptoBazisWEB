@@ -74,9 +74,15 @@ app.controller("forumCtrl", function($scope, $rootScope, $location) {
         setTimeout(() => {
             axios.get(`${$rootScope.serverUrl}/db/forumposts`).then(res =>{    
                 $scope.posts = res.data.data;
-    
-                toastcontent.innerText = "Posztok betöltve!"
-                toastBootstrap.show()
+
+                if ($scope.posts.length > 0) {
+                    toastcontent.innerText = "Posztok betöltve!"
+                    toastBootstrap.show()
+                }
+                else{
+                    toastcontent.innerText = "Nincsenek Posztok!" 
+                    toastBootstrap.show()
+                }
                 $scope.$apply();
             })
         }, 2000);
