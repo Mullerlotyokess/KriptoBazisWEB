@@ -6,7 +6,7 @@ Telepítési útmutató
 Kattintsunk a zöld <> Code gombra majd töltsük le ZIP-ként az egész projektet.
 Bontsuk ki a zip fájlt lehetőleg a C: meghajtón és nyissuk meg a mappát Visual Studio Codeban.
 Ha még nincs XAMPP telepítve a gépen telepíteni kell, majd elindítani az Apache és MySQL modulokat.
-Visual Studio Codeban jobb klikkeljünk az API mappára és válasszu ki az "Open in integrated terminal" opciót
+Visual Studio Codeban jobb klikkeljünk az API mappára és válasszuk ki az "Open in integrated terminal" opciót és
 írjuk be a terminálba a következőket:
 C:\KriptoBazisWEB\API> npm install
 C:\KriptoBazisWEB\API> npm run dev
@@ -15,7 +15,7 @@ az npm installal letölti a szükséges node modulokat
 az npm run dev pedig elindítja a Szervert.
 
 Visual Studio Codeban még telepítsük a Live Server Extension-t az extensions fülben.
-Ha ez megvan jobbklikk az index.html fájlra és nyomjunk az "Open with Live Server"
+Ha ez megvan jobbklikk az index.html fájlra és nyomjunk az "Open with Live Server" opcióra
 Legyen a legújabb verziójú böngészőnk Pl: Brave, Google Chrome, Firefox
 
 2. metódus
