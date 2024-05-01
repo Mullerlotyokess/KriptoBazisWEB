@@ -1,0 +1,206 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Backend Tesztek",
+    "collectionId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+    "dateExported": "2024-05-01T08:33:36.449Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e7c99ee1-a542-485f-9817-b4b7546f2097",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "Coinmarketcap - Kripto adatok lekérése",
+            "url": "https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-01T08:18:10.961Z",
+            "modified": "2024-05-01T08:18:53.712Z",
+            "headers": [
+                {
+                    "name": "X-CMC_PRO_API_KEY",
+                    "value": "7902d9b3-8a32-4a60-ab3d-ec68cae957e8"
+                },
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ]
+        },
+        {
+            "_id": "7f8d608a-e443-4b15-9e2b-0297a82cac21",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "Bitcoin adatainak lekérése",
+            "url": "http://localhost:8000/db/get_crypto_data/btc",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-05-01T08:19:14.387Z",
+            "modified": "2024-05-01T08:19:31.070Z",
+            "headers": []
+        },
+        {
+            "_id": "0ed97a86-8ac6-4580-a64c-1ea214608b2f",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "Hírek lekérése",
+            "url": "http://localhost:8000/db/news",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-05-01T08:20:14.108Z",
+            "modified": "2024-05-01T08:20:19.113Z",
+            "headers": []
+        },
+        {
+            "_id": "78ab927f-0573-4f22-8859-7706bf403d82",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "Hírek feltöltése",
+            "url": "http://localhost:8000/db/news",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-05-01T08:20:41.104Z",
+            "modified": "2024-05-01T08:21:32.243Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "title",
+                        "value": "Backend Teszt"
+                    },
+                    {
+                        "name": "author",
+                        "value": "developer"
+                    },
+                    {
+                        "name": "content",
+                        "value": "tartalom teszt"
+                    },
+                    {
+                        "name": "date",
+                        "value": "2024-05-01"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "58381604-953d-4b34-9737-e33992c0b7cb",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "logincheck üres token",
+            "url": "http://localhost:8000/db/logincheck",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-05-01T08:22:47.302Z",
+            "modified": "2024-05-01T08:27:03.021Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "teszt@teszt.teszt"
+                    },
+                    {
+                        "name": "pass",
+                        "value": "teszt123A"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d1371080-a9c7-4956-98b0-a1cedbaf4119",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "logincheck tokennel",
+            "url": "http://localhost:8000/db/logincheck",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-05-01T08:25:02.588Z",
+            "modified": "2024-05-01T08:26:52.040Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "admin@admin.hu"
+                    },
+                    {
+                        "name": "pass",
+                        "value": "7af2d10b73ab7cd8f603937f7697cb5fe432c7ff"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "82d8b262-58e3-4349-847a-71d5facb9c2e",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "Profil lekérése userID alapján",
+            "url": "http://localhost:8000/db/profiles/userID/eq/33",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-05-01T08:27:46.005Z",
+            "modified": "2024-05-01T08:28:23.309Z",
+            "headers": []
+        },
+        {
+            "_id": "34fd21c6-3848-45d1-8d25-ec0fb2208429",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "users lekérése ID alapján",
+            "url": "http://localhost:8000/db/users/ID/eq/41",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-05-01T08:30:18.810Z",
+            "modified": "2024-05-01T08:30:47.634Z",
+            "headers": []
+        },
+        {
+            "_id": "203cd1d4-0ddf-4b45-bb2c-31392eb05b19",
+            "colId": "d3dc9409-68a8-4d5e-b13b-01a396ef55e5",
+            "containerId": "",
+            "name": "profil adatok frissítése ha már van profil",
+            "url": "http://localhost:8000/db/profiles/userID/eq/33",
+            "method": "PATCH",
+            "sortNum": 110000,
+            "created": "2024-05-01T08:31:48.421Z",
+            "modified": "2024-05-01T08:33:08.139Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "nickname",
+                        "value": "admin"
+                    },
+                    {
+                        "name": "statusmg",
+                        "value": "backend teszt"
+                    },
+                    {
+                        "name": "location",
+                        "value": "thunderclient"
+                    },
+                    {
+                        "name": "social",
+                        "value": "asd"
+                    }
+                ]
+            }
+        }
+    ],
+    "ref": "QyfasGekrBjlrAMCqznnqiG7JmJPnwJQgwjgHyna-EmDMBd5Rwe3wVIXpDWypArzhshQ7T_oBla1YC943QjeXA"
+}
