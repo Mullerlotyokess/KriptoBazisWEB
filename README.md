@@ -18,7 +18,11 @@ Visual Studio Codeban még telepítsük a Live Server Extension-t az extensions 
 Ha ez megvan jobbklikk az index.html fájlra és nyomjunk az "Open with Live Server" opcióra
 Legyen a legújabb verziójú böngészőnk Pl: Brave, Google Chrome, Firefox
 
+Adatbázis létrehozása: lépjünk be a phpMyAdmin-ba és hozzunk létre egy adatbázist
+"kriptobazis" néven "utf8_hungarian_ci"  illesztéssel. Ezután lépjünk be az adatbázisba és importáljuk
+a kriptobazis.sql fájlt a database mappából.
+
 2. metódus
 másoljuk ki a github repo linkjét majd visual studio codeban ha van gitünk, klónozzuk a repo-t.
 Sikeres klónozás után tegyük meg ugyanazokat mint az 1. metódusban: 
-XAMPP elindítása, npm modulok telepítése majd szerver futtatása és Live server megnyitása.
+XAMPP elindítása, npm modulok telepítése majd szerver futtatása és Live server megnyitása + adatbázis felépítése.
